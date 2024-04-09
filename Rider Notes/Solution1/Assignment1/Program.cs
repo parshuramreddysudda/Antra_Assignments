@@ -73,7 +73,6 @@ public class Program
     }
     
    /* Controlling Flow and Converting Types
-   Sure, let's explore each of the questions:
 
 1. What happens when you divide an int variable by 0?
    - When you divide an int variable by 0 in C, it will result in System.DivideByZeroException.
