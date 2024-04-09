@@ -1,0 +1,15 @@
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/bin/Debug/net8.0/Assignment2
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/bin/Debug/net8.0/Assignment2.deps.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/bin/Debug/net8.0/Assignment2.runtimeconfig.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/bin/Debug/net8.0/Assignment2.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/bin/Debug/net8.0/Assignment2.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.AssemblyInfoInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.AssemblyInfo.cs
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.csproj.CoreCompileInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.sourcelink.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/refint/Assignment2.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/Assignment2.genruntimeconfig.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/Solution1/Assignment2/obj/Debug/net8.0/ref/Assignment2.dll
