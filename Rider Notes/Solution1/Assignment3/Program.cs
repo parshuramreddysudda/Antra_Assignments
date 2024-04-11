@@ -217,6 +217,7 @@ interface IFacultyService
 interface IStudentService
 {
    void Fees();
+
    void Attendence();
 }
 
