@@ -70,15 +70,6 @@ True
 
 class Program
 {
-   static void Main(string[] args)
-   {
-      
-      Array();
-      
-      //Second Assignment
-      SecondAssignment sc = new SecondAssignment();
-      Console.WriteLine(sc.Fibonacci(7));
-   }
 
    static void Array()
    {
@@ -119,7 +110,17 @@ class Program
 class SecondAssignment
 {
 
-   public int Fibonacci(int num)
+   public static void Main(string[] args)
+   {
+      ActionExample();
+   }
+   public static void ActionExample()
+   {
+      Action<int> fib = new Action<int>(Fibonacci);
+      fib(560);
+
+   }
+   public static void Fibonacci(int num)
    {
       int[] fib = new int[num+1];
       fib[1] = 1;
@@ -128,8 +129,10 @@ class SecondAssignment
       {
          fib[i] = fib[i - 1] + fib[i - 2];
       }
+      Console.WriteLine(fib.ToString());
+      Console.WriteLine(fib[1..(num + 1)]);
 
-      return fib[num];
+      // return fib[num];
    }
 }
 
