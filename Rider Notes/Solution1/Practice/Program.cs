@@ -1,41 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-class MyClass
+namespace Delegates
 {
-    static Action<string> cw = Console.WriteLine;
-
-    delegate void Palindrome();
-
-    static string str = "RacecaR";
-    public static void Main(string[] args)
+    class Program
     {
-        Palindrome palin = new Palindrome(PalindromeMethod);
-        Palindrome palin2 = PalindromeMethod;
-
-        palin = PrintString;
-        
-        palin.Invoke();
-         
-        // palin();
-        // palin2.Invoke();
-    }
-
-    static void PrintString()
-    {
-        cw($"String is {str}");
-    }
-
-    static void PalindromeMethod()
-    {
-        bool isTrue = str.Reverse().Equals(str);
-        if (isTrue)
+        static void Main(string[] args)
         {
-            cw($"{str} is Palindrome");
-        }
-        else
-        {
-            cw($"{str} is NOT Palindrome");
+            Func<int, int,int> math = (a, b) => a + b;
+
+            Console.WriteLine($"{math.Invoke(34, 67)}");
+
+            Predicate<int> isEven = (i => i % 2 == 0);
+            Console.WriteLine($"{isEven(23857982)}");
         }
     }
-    
 }
