@@ -1,0 +1,15 @@
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/bin/Debug/net8.0/DapperLearn
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/bin/Debug/net8.0/DapperLearn.deps.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/bin/Debug/net8.0/DapperLearn.runtimeconfig.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/bin/Debug/net8.0/DapperLearn.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/bin/Debug/net8.0/DapperLearn.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.AssemblyInfoInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.AssemblyInfo.cs
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.csproj.CoreCompileInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.sourcelink.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/refint/DapperLearn.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/DapperLearn.genruntimeconfig.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/DapperLearn/DapperLearn/obj/Debug/net8.0/ref/DapperLearn.dll
