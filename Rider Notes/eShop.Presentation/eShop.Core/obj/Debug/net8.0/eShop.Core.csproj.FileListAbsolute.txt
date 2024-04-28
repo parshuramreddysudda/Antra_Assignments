@@ -1,0 +1,12 @@
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/bin/Debug/net8.0/eShop.Core.deps.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/bin/Debug/net8.0/eShop.Core.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/bin/Debug/net8.0/eShop.Core.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.AssemblyInfoInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.AssemblyInfo.cs
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.csproj.CoreCompileInputs.cache
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.sourcelink.json
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/refint/eShop.Core.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/eShop.Core.pdb
+/Users/ram/Documents/GitHub/Antra_Assignments/Rider Notes/eShop.Presentation/eShop.Core/obj/Debug/net8.0/ref/eShop.Core.dll
