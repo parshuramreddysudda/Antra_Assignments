@@ -22,22 +22,21 @@ public class ReviewRepository : IRepository<Review>
         return conn.Execute("DELETE FROM Reviews where id = @id", id);
     }
 
-    public int Update(int obj)
+    public int Update(Review obj)
     {
         IDbConnection conn = _dbConnection.GetConnection();
-        return conn.Execute("UPDATE Reviews SET id=@id ,ProductId=@ProductId,PersonName=@PersonName,ReviewInformation=@ReviewInformation Where ID=@id)", obj);
+        return conn.Execute("UPDATE Reviews SET id=@id ,ProductId=@ProductId,PersonName=@PersonName,ReviewInformation=@ReviewInformation Where ID=@id", obj);
     }
 
     public IEnumerable<Review> GetAll()
     {
         IDbConnection conn = _dbConnection.GetConnection();
-       // return conn.Query<>()
-       return null;
+        return conn.Query<Review>("Select Id, ProductId,PersonName,ReviewInformation from Reviews");
     }
 
     public Review GetById(int id)
     {
         IDbConnection conn = _dbConnection.GetConnection();
-        return conn.Query("Select Id, ProductID,PersonName,ReviewInformation where id=@id", id)<Review>;
+        return conn.QuerySingleOrDefault<Review>("Select Id, ProductID,PersonName,ReviewInformation from Reviews where id=@id", new {id=id});
     }
 }

@@ -25,6 +25,7 @@ public class ManageReviews
     {
         Console.WriteLine("Enter ID to Delete");
         _reviewRepository.DeleteById(Convert.ToInt32(Console.ReadLine()));
+        GetAll();
     }
 
     public void UpdateReview()
@@ -39,21 +40,27 @@ public class ManageReviews
         Console.WriteLine("Enter Review");
         review.ReviewInformation = Console.ReadLine();
         _reviewRepository.Update(review);
-        
+        GetAll();
     }
 
     public void GetByID()
     {
-        
+        Console.WriteLine("Enter Review ID");
+        Review review = _reviewRepository.GetById(Convert.ToInt32(Console.ReadLine()));
+        Console.WriteLine($"{review.Id}\t {review.ReviewInformation}");
     }
 
     public void GetAll()
     {
-        
+        IEnumerable<Review> reviews = _reviewRepository.GetAll();
+        foreach (var review  in reviews)
+        {
+            Console.WriteLine($"{review.Id}\t {review.ReviewInformation}");
+        }
     }
 
     public void Run()
     {
-        AddReview();
+        GetByID();
     }
 }

@@ -5,4 +5,4 @@ using eShop.Presentation.UI;
 ManageReviews manageReviews = new ManageReviews();
 
 manageReviews.Run();
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
