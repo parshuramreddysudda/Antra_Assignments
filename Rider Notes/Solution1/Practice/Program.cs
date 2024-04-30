@@ -22,7 +22,8 @@ namespace Delegates
         }
 
         static void Main(string[] args)
-        {string name = null;
+        {
+            string name = null;
             Console.WriteLine(name?.Length);
    
             Person person = new Person("Jack", 28);
