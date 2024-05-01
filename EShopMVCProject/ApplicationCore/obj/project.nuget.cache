@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sz2//gvDqiACv940mBDcosX7ebUGYsD0+Um4iSMPgxQ5qalzuesTF+WyNgCNlLYZjj+pA68tkY7Co+5gcesJvw==",
+  "dgSpecHash": "q3/vrA0xfE7xYGAwB+jSdupD6KwFdXqcHDJAIqP+ny0OyEv4c+msCGsYpbud3jR0jZ4Y5OilideZTVziKo9PpQ==",
   "success": true,
-  "projectFilePath": "/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/EShopMVCProject.csproj",
+  "projectFilePath": "/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/ApplicationCore/ApplicationCore.csproj",
   "expectedPackageFiles": [
     "/Users/ram/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/ram/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

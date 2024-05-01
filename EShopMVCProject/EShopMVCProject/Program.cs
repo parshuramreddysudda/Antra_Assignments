@@ -1,8 +1,19 @@
+using ApplicationCore.RepositoryContracts;
+using ApplicationCore.ServiceContracts;
+using Infrastructure.Repository;
+using Infrastructure.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//Repository Injection
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+
+//Service Injection
+builder.Services.AddScoped<IProductService, ProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
