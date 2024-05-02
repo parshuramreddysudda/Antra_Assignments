@@ -1,0 +1,58 @@
+@model ProductResponseModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+<h2>Delete Product</h2>
+
+<div>
+    <p>Are you sure you want to delete the product <strong>@Model.Name</strong>?</p>
+    <form asp-action="Update" asp-controller="Product" method="post">
+        <input type="hidden" asp-for="ID" />
+         <div class="form-group">
+                <label asp-for="Name">Product Name</label>
+                <input asp-for="Name" class="form-control" value="@Model.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                
+                <label asp-for="Description">Product Description</label>
+                <input asp-for="Description" class="form-control" value="@Model.Description" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+                
+                <label asp-for="CategoryId">Product Category</label>
+               <select asp-for="CategoryId" class="form-control">
+                   <option value="">Select a category...</option>
+                   @if (ViewBag.Categories != null)
+                   {
+                       foreach (var category in ViewBag.Categories)
+                       {
+                           <option value="@category.Id">@category.Name</option>
+                       }
+                   }
+               </select>
+
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                
+                <label asp-for="Price">Product Price</label>
+                <input asp-for="Price" class="form-control" value="@Model.Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+                
+                <label asp-for="Qty">Product Quantity</label>
+                <input asp-for="Qty" class="form-control" value="@Model.Qty" />
+                <span asp-validation-for="Qty" class="text-danger"></span>
+                
+                <label asp-for="Product_image">Product Image URL</label>
+                <input asp-for="Product_image" class="form-control" value="@Model.Product_image"/>
+                <span asp-validation-for="Product_image" class="text-danger"></span>
+                
+                <label asp-for="SKU">SKU Value</label>
+                <input asp-for="SKU" class="form-control" value="@Model.SKU"/>
+                <span asp-validation-for="SKU" class="text-danger"></span>
+         </div>
+        <button type="submit" class="btn btn-success">Edit</button>
+        <a asp-action="Index" asp-controller="Product" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

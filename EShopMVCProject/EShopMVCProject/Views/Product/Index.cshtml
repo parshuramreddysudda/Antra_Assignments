@@ -1,0 +1,27 @@
+@model IEnumerable<ProductResponseModel>
+
+@{
+    ViewBag.Title = "All Products";
+    Layout = "_Layout";
+}
+
+<h2>All Products</h2>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@(!string.IsNullOrEmpty(product.Product_image) ? product.Product_image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjpKClqGQynvUzxaBl8bc5Bnx-t593GEuCJqCA-yoAKg&s")" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">Price: $@product.Price</p>
+                    <p class="card-text">Quantity: @product.Qty</p>
+                    <a href="@Url.Action("Update", "Product", new { id = product.ID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "Product", new { id = product.ID })" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

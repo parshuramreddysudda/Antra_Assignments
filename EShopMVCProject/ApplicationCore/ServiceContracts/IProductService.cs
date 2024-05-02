@@ -1,3 +1,4 @@
+using ApplicationCore.Model.Request;
 using ApplicationCore.Model.Response;
 
 namespace ApplicationCore.ServiceContracts;
@@ -5,9 +6,9 @@ namespace ApplicationCore.ServiceContracts;
 public interface IProductService
 {
     IEnumerable<ProductResponseModel> GetAllProducts();
-    int InsertProduct(ProductResponseModel product);
-    int UpdateProduct(ProductResponseModel product);
-    int DeleteProduct(ProductResponseModel product);
+    int InsertProduct(ProductRequestModel product);
+    int UpdateProduct(ProductRequestModel product);
+    int DeleteProduct(int Id);
     ProductResponseModel GetProductByID(int id);
 
 } 

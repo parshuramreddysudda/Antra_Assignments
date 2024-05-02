@@ -18,12 +18,32 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Product/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Product/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9VcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Shared/Error.cshtml]

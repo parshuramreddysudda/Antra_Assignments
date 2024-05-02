@@ -1,7 +1,9 @@
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using Infrastructure.Data;
 using Infrastructure.Repository;
 using Infrastructure.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,13 @@ builder.Services.AddControllersWithViews();
 
 //Repository Injection
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 
 
 //Service Injection
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddDbContext<ECommerenceDbContext>(context=>context.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDB")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +38,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Product}/{action=Index}/{id?}");
 
 app.Run();

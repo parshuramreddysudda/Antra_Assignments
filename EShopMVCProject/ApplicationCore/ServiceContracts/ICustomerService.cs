@@ -1,3 +1,4 @@
+using ApplicationCore.Model.Request;
 using ApplicationCore.Model.Response;
 
 namespace ApplicationCore.ServiceContracts;
@@ -5,8 +6,8 @@ namespace ApplicationCore.ServiceContracts;
 public interface ICustomerService
 {
     IEnumerable<CustomerResponseModel> GetAllCustomers();
-    int InsertCustomer(CustomerResponseModel product);
-    int UpdateCustomer(CustomerResponseModel product);
-    int DeleteCustomer(CustomerResponseModel product);
+    int InsertCustomer(CustomerRequestModel product);
+    int UpdateCustomer(CustomerRequestModel product);
+    int DeleteCustomer(int id);
     CustomerResponseModel GetCustomerByID(int id);
 }

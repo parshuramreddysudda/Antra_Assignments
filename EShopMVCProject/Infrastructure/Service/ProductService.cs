@@ -1,47 +1,60 @@
 using ApplicationCore.Entities.Product;
+using ApplicationCore.Model.Request;
 using ApplicationCore.Model.Response;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using Infrastructure.Repository;
 
 namespace Infrastructure.Service;
 
 public class ProductService:IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly IProductCategoryRepository _productCategoryRepository;
 
-    public ProductService(IProductRepository productRepo)
+    public ProductService(IProductRepository productRepository)
     {
-        _productRepository = productRepo;
+        _productRepository = productRepository;
     }
     public IEnumerable<ProductResponseModel> GetAllProducts()
     {
-        List<ProductResponseModel> list = new List<ProductResponseModel>();
-        var collection = _productRepository.GetAll();
-        if (collection != null)
+        List<ProductResponseModel> productList = new List<ProductResponseModel>();
+
+        // Retrieve all products
+        var products = _productRepository.GetAll();
+
+        // Iterate over each product to create ProductResponseModel
+        foreach (var product in products)
         {
-            foreach (var product in collection)
+            ProductResponseModel productResponseModel = new ProductResponseModel
             {
-                ProductResponseModel productResponseModel = new ProductResponseModel();
-                productResponseModel.Name = product.Name;
-                productResponseModel.ID = product.ID;
-                productResponseModel.Description = product.Description;
-            }
+                ID = product.ID,
+                Name = product.Name,
+                Description = product.Description,
+                CategoryId = product.CategoryId,
+                Product_image = product.Product_image
+            };
+
+            productList.Add(productResponseModel);
         }
-        
+
+        return productList;
     }
 
-    public int InsertProduct(ProductResponseModel product)
+
+    public int InsertProduct(ProductRequestModel product)
     {
         Product updatedProduct = new Product()
         {
             Name = product.Name,
-            ID = product.ID,
-            Description = product.Description
+            Description = product.Description,
+            CategoryId= product.CategoryId,
+            Qty = product.Qty
         };
         return _productRepository.Insert(updatedProduct);
     }
 
-    public int UpdateProduct(ProductResponseModel product)
+    public int UpdateProduct(ProductRequestModel product)
     {
         Product updatedProduct = new Product()
         {
@@ -52,13 +65,14 @@ public class ProductService:IProductService
         return _productRepository.Update(updatedProduct);
     }
 
-    public int DeleteProduct(ProductResponseModel product)
+    public int DeleteProduct(int id)
     {
-        throw new NotImplementedException();
+        return _productRepository.Delete(id);
     }
 
     public ProductResponseModel GetProductByID(int id)
     {
+        
         var product = _productRepository.GetById(id);
         if (product != null)
         {
@@ -66,6 +80,7 @@ public class ProductService:IProductService
             productResponseModel.Name = product.Name;
             productResponseModel.ID = product.ID;
             productResponseModel.Description = product.Description;
+            return productResponseModel;
         }
 
         return null;
