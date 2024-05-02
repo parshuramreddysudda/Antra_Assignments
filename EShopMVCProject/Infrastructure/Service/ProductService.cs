@@ -32,6 +32,8 @@ public class ProductService:IProductService
                 Name = product.Name,
                 Description = product.Description,
                 CategoryId = product.CategoryId,
+                Price = product.Price,
+                Qty = product.Qty,
                 Product_image = product.Product_image
             };
 
@@ -46,10 +48,13 @@ public class ProductService:IProductService
     {
         Product updatedProduct = new Product()
         {
+            ID = product.ID,
             Name = product.Name,
             Description = product.Description,
-            CategoryId= product.CategoryId,
-            Qty = product.Qty
+            CategoryId = product.CategoryId,
+            Price = product.Price,
+            Qty = product.Qty,
+            Product_image = product.Product_image
         };
         return _productRepository.Insert(updatedProduct);
     }
@@ -58,9 +63,13 @@ public class ProductService:IProductService
     {
         Product updatedProduct = new Product()
         {
-            Name = product.Name,
             ID = product.ID,
-            Description = product.Description
+            Name = product.Name,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Price = product.Price,
+            Qty = product.Qty,
+            Product_image = product.Product_image
         };
         return _productRepository.Update(updatedProduct);
     }

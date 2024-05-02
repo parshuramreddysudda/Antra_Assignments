@@ -18,8 +18,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Customer/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/Views/Home/Index.cshtml]

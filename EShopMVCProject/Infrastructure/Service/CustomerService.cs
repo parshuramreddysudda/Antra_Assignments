@@ -2,40 +2,47 @@ using ApplicationCore.Model.Request;
 using ApplicationCore.Model.Response;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using AutoMapper;
 
 namespace Infrastructure.Service;
 
 public class CustomerService:ICustomerService
 {
     private readonly ICustomerRepository _customerRepository;
+    private readonly IMapper _mapper;
 
-
-    public CustomerService(ICustomerRepository vCustomerRepository)
+    public CustomerService(ICustomerRepository _customerRepository,IMapper mapper)
     {
-        _customerRepository = vCustomerRepository;
+        this._customerRepository = _customerRepository;
+        _mapper = mapper;
+        
     }
     public IEnumerable<CustomerResponseModel> GetAllCustomers()
     {
-        return null;
+        var customers = _customerRepository.GetAll();
+        return _mapper.Map<IEnumerable<CustomerResponseModel>>(customers);
+    }
+    
+    public int InsertCustomer(CustomerRequestModel customerRequestModel)
+    {
+        var customer = _mapper.Map<CustomerEntities.Customer>(customerRequestModel);
+        return _customerRepository.Insert(customer);
     }
 
-    public int InsertCustomer(CustomerRequestModel product)
+    public int UpdateCustomer(CustomerRequestModel customerRequestModel)
     {
-        throw new NotImplementedException();
-    }
-
-    public int UpdateCustomer(CustomerRequestModel product)
-    {
-        throw new NotImplementedException();
+        var customer = _mapper.Map<CustomerEntities.Customer>(customerRequestModel);
+        return _customerRepository.Update(customer);
     }
 
     public int DeleteCustomer(int id)
     {
-        throw new NotImplementedException();
+        return _customerRepository.Delete(id);
     }
 
     public CustomerResponseModel GetCustomerByID(int id)
     {
-        throw new NotImplementedException();
+        var customer = _customerRepository.GetById(id);
+        return _mapper.Map<CustomerResponseModel>(customer);
     }
 }

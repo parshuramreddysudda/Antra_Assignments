@@ -13,12 +13,16 @@ builder.Services.AddControllersWithViews();
 //Repository Injection
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRespository>();
 
 
 //Service Injection
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddDbContext<ECommerenceDbContext>(context=>context.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDB")));
 
+
+builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,6 +42,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Product}/{action=Index}/{id?}");
+    pattern: "{controller=Customer}/{action=Index}/{id?}");
 
 app.Run();
