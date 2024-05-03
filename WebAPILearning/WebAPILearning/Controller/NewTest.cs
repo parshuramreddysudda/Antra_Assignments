@@ -5,35 +5,40 @@ namespace WebAPILearning.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Test : ControllerBase
+    public class NewTest : ControllerBase
     {
-        // GET: api/<Test>
+        // GET: api/<NewTest>
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[]
+            {
+                "value1",
+                "value2"
+            };
         }
 
-        // GET api/<Test>/5
+        // GET api/<NewTest>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<Test>
+        // POST api/<NewTest>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<Test>/5
+        // PUT api/<NewTest>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id,
+            [FromBody] string value)
         {
         }
 
-        // DELETE api/<Test>/5
+        // DELETE api/<NewTest>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

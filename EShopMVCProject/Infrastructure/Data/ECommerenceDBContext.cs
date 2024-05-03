@@ -1,3 +1,4 @@
+using ApplicationCore.Entities.Customer;
 using ApplicationCore.Entities.Product;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ public class ECommerenceDbContext:DbContext
 
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
-    public DbSet<CustomerEntities.Customer> Customers { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     public DbSet<CustomerEntities.UserAddress> UserAddresses { get; set; }
     public DbSet<CustomerEntities.Address> Addresses { get; set; }
     

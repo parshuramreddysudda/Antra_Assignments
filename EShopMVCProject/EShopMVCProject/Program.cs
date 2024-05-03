@@ -1,5 +1,6 @@
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using AutoMapper;
 using Infrastructure.Data;
 using Infrastructure.Repository;
 using Infrastructure.Service;
@@ -21,8 +22,14 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddDbContext<ECommerenceDbContext>(context=>context.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDB")));
 
-
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddLogging(builder =>
+{
+    builder.AddConsole(); // Log to console
+    builder.AddDebug();   // Log to debug output window
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

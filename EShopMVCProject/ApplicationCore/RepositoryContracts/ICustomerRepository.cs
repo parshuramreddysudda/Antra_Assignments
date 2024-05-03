@@ -1,7 +1,9 @@
+using ApplicationCore.Entities.Customer;
+
 namespace ApplicationCore.RepositoryContracts;
 
 
-public interface ICustomerRepository:IRepository<CustomerEntities.Customer>
+public interface ICustomerRepository:IRepository<Customer>
 {
     
 }
