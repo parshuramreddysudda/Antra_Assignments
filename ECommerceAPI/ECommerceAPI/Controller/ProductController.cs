@@ -1,5 +1,7 @@
-using Microsoft.AspNetCore.Http;
+using ApplicationCore.Model.Request;
+using ApplicationCore.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ECommerceAPI.Controller
 {
@@ -7,36 +9,40 @@ namespace ECommerceAPI.Controller
     [ApiController]
     public class ProductController : ControllerBase
     {
-        // GET: api/<ProductController>
+        private readonly IProductServiceAsync _productServiceAsync;
+
+        public ProductController(IProductServiceAsync productServiceAsync)
+        {
+            _productServiceAsync = productServiceAsync;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await _productServiceAsync.GetAllProductsAsync());
         }
 
-        // GET api/<ProductController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ProductController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Insert(ProductRequestModel productRequestModel)
         {
+            return Ok(await _productServiceAsync.InsertProductAsync(productRequestModel));
         }
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
         {
+            if (await _productServiceAsync.GetProductByIDAsync(id) != null)
+            {
+                return Ok(await _productServiceAsync.DeleteProductAsync(id));
+            }
+
+            return NotFound("Id Not Found");
         }
 
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut]
+        public async Task<IActionResult> Update(ProductRequestModel productRequestModel, int id)
         {
+            return Ok(await _productServiceAsync.UpdateProductAsync(productRequestModel));
         }
     }
 }
