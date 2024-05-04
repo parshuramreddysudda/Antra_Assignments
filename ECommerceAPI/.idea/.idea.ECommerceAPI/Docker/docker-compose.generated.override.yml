@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  ecommerceapi:
+    build:
+      context: "/Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI"
+      dockerfile: "ECommerceAPI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/ECommerceAPI.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "ecommerceapi:dev"
+    ports: []
+    volumes:
+    - "/Users/ram/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI:/app:rw"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI:/src:rw"
+    working_dir: "/app"

@@ -1,5 +1,7 @@
 using ApplicationCore.Model.Request;
 using ApplicationCore.ServiceContracts;
+using ECommerceAPI.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,16 +12,21 @@ namespace ECommerceAPI.Controller
     public class CustomerController : ControllerBase
     {
         public readonly ICustomerServiceAsync CustomerServiceAsync;
-
+        
         public CustomerController(ICustomerServiceAsync customerServiceAsync)
         {
             CustomerServiceAsync = customerServiceAsync;
         }
+        
+        
+        [CustomAuthorize]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await CustomerServiceAsync.GetAllCustomersAsync());
         }
+        
+        
         [HttpPost]
         public async Task<IActionResult> Insert(CustomerRequestModel customerRequestModel)
         {
