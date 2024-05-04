@@ -1,6 +1,8 @@
 using ApplicationCore.Model.Request;
 using ApplicationCore.ServiceContracts;
 using ECommerceAPI.Helper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,7 @@ namespace ECommerceAPI.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class CustomerController : ControllerBase
     {
         public readonly ICustomerServiceAsync CustomerServiceAsync;
@@ -18,8 +21,7 @@ namespace ECommerceAPI.Controller
             CustomerServiceAsync = customerServiceAsync;
         }
         
-        
-        [CustomAuthorize]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Get()
         {

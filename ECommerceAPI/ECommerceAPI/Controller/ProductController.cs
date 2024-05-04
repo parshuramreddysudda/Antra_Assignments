@@ -2,6 +2,8 @@ using ApplicationCore.Model.Request;
 using ApplicationCore.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerceAPI.Controller
 {
@@ -16,6 +18,7 @@ namespace ECommerceAPI.Controller
             _productServiceAsync = productServiceAsync;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Get()
         {

@@ -41,7 +41,7 @@ public class AccountServiceAsync:IAccountService
                 audience: _configuration["JWT:ValidAudience"],
                 expires: DateTime.Now.AddDays(1),
                 claims: authClaims,
-                signingCredentials: new SigningCredentials(authSignKey, SecurityAlgorithms.EcdsaSha256)
+                signingCredentials: new SigningCredentials(authSignKey, SecurityAlgorithms.HmacSha256)
             );
             var handler = new JwtSecurityTokenHandler().WriteToken(token);
             return handler;

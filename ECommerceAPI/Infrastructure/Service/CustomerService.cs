@@ -4,6 +4,7 @@ using ApplicationCore.Model.Response;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Infrastructure.Service;
 
