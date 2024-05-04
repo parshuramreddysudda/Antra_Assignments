@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using ApplicationCore.Model.Request;
 using ApplicationCore.ServiceContracts;
 using ECommerceAPI.Helper;
+using ECommerceAPI.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -21,7 +23,8 @@ namespace ECommerceAPI.Controller
             CustomerServiceAsync = customerServiceAsync;
         }
         
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize (Policy = IdentityData.AdminUserPolicyName)]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -36,13 +39,13 @@ namespace ECommerceAPI.Controller
         }
 
         [HttpDelete]
+        [Authorize (Policy = IdentityData.AdminUserPolicyName)]
         public async Task<IActionResult> Delete(int id)
         {
             if (await CustomerServiceAsync.GetCustomerByIDAsync(id) != null)
             {
                 return Ok(await CustomerServiceAsync.DeleteCustomerAsync(id));   
             }
-
             return NotFound("Id Not Found");
         }
 

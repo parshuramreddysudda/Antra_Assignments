@@ -2,6 +2,7 @@ using System.Text;
 using ApplicationCore.Entities.ApplicationUser;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using ECommerceAPI.Identity;
 using Infrastructure.Data;
 using Infrastructure.Repository;
 using Infrastructure.Service;
@@ -53,6 +54,16 @@ builder.Services.AddDbContext<ECommerenceDbContext>(options =>
 });
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(IdentityData.AdminUserPolicyName, policy =>
+    {
+        policy.RequireClaim(IdentityData.AdminUserClaimName, "true");
+    });
+});
+
+
 
 var app = builder.Build();
 

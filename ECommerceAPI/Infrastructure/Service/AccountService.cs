@@ -5,6 +5,7 @@ using System.Text;
 using ApplicationCore.Model.Request;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using ECommerceAPI.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -31,10 +32,12 @@ public class AccountServiceAsync:IAccountService
         var login=await _accountRepository.LoginAsync(loginModel);
         if (login.Succeeded)
         {
+            bool isAdmin = loginModel.IsAdmin;
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, loginModel.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                isAdmin ? new Claim(IdentityData.AdminUserClaimName, "true") : null
             };
             var authSignKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
             var token = new JwtSecurityToken(issuer: _configuration["JWT:ValidIssuer"],
