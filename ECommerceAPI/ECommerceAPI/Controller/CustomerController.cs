@@ -16,7 +16,7 @@ namespace ECommerceAPI.Controller
     [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class CustomerController : ControllerBase
     {
-        public readonly ICustomerServiceAsync CustomerServiceAsync;
+        private readonly ICustomerServiceAsync CustomerServiceAsync;
         
         public CustomerController(ICustomerServiceAsync customerServiceAsync)
         {
@@ -30,7 +30,6 @@ namespace ECommerceAPI.Controller
         {
             return Ok(await CustomerServiceAsync.GetAllCustomersAsync());
         }
-        
         
         [HttpPost]
         public async Task<IActionResult> Insert(CustomerRequestModel customerRequestModel)
