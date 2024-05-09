@@ -92,5 +92,22 @@ VALUES
     ('Health & Household', 9),   -- Age Group
     ('Tools & Home Improvement', 10);  -- Theme
     
+*/
 
+select ID,Name,[Description],CategoryId,Price,Qty,Product_image,SKU from Products;
 
+-- Inserting dummy values into the Products table
+INSERT INTO Products (Name, [Description], CategoryId, Price, Qty, Product_image, SKU)
+VALUES 
+    ('iPhone 12', 'The iPhone 12 is a powerful smartphone with a sleek design and advanced features.', 15, 999.99, 100, 'https://example.com/iphone12.jpg', 'SKU123'),
+    ('Samsung Galaxy S21', 'The Samsung Galaxy S21 is a premium Android smartphone with a stunning display and impressive camera.', 16, 899.99, 120, 'https://example.com/samsung_s21.jpg', 'SKU456'),
+    ('HP Pavilion x360', 'The HP Pavilion x360 is a versatile 2-in-1 laptop with a touchscreen display and long battery life.', 16, 799.99, 80, 'https://example.com/hp_pavilion_x360.jpg', 'SKU789'),
+    ('Dell Inspiron', 'The Dell Inspiron is a reliable laptop with powerful performance and a comfortable keyboard.', 16, 699.99, 90, 'https://example.com/dell_inspiron.jpg', 'SKU321'),
+    ('Nike T-Shirt', 'The Nike T-Shirt is made from soft, breathable fabric and features the iconic Nike logo.', 18, 29.99, 200, 'https://example.com/nike_tshirt.jpg', 'SKU654'),
+    ('Adidas Hoodie', 'The Adidas Hoodie is a comfortable and stylish sweatshirt perfect for everyday wear.', 18, 49.99, 150, 'https://example.com/adidas_hoodie.jpg', 'SKU987'),
+    ('Harry Potter and the Sorcerer''s Stone', 'Harry Potter and the Sorcerer''s Stone is the first book in the Harry Potter series by J.K. Rowling.', 22, 14.99, 300, 'https://example.com/harry_potter_book.jpg', 'SKU654'),
+    ('Sapiens: A Brief History of Humankind', 'Sapiens: A Brief History of Humankind is a thought-provoking exploration of human history by Yuval Noah Harari.', 23, 19.99, 250, 'https://example.com/sapiens_book.jpg', 'SKU987'),
+    ('KitchenAid Stand Mixer', 'The KitchenAid Stand Mixer is a versatile kitchen appliance perfect for baking and cooking.', 25, 299.99, 50, 'https://example.com/kitchenaid_mixer.jpg', 'SKU321'),
+    ('Decorative Throw Pillow', 'The Decorative Throw Pillow adds a pop of color and style to any living space.', 26, 39.99, 100, 'https://example.com/throw_pillow.jpg', 'SKU654');
+ 
+select * from ProductCategories;
