@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using ApplicationCore.Entities.Orders;
 
 namespace ApplicationCore.Entities.Customer;
 
@@ -15,4 +16,5 @@ public class Customer
     public string Phone { get; set; }= string.Empty;
     public string ProfilePic { get; set; }= string.Empty;
     public int UserId { get; set; } 
+    public ICollection<Order> Orders { get; set; }
 }

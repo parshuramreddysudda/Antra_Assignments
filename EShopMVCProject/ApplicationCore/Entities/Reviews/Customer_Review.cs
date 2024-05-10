@@ -1,17 +1,36 @@
-namespace ApplicationCore.Entities.Reviews;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-public class Customer_Review
+namespace ApplicationCore.Entities.Reviews
 {
-    public int Id { get; set; }
-    public int Customer_Id { get; set; }
-    public Customer.Customer Customer { get; set; }
-    public string Customer_Name { get; set; }
-    public int Order_Id { get; set; }
-    public DateOnly OrderDate { get; set; }
-    public int Product_Id { get; set; }
-    public Product.Product Product { get; set; }
-    public string Product_Name { get; set; }
-    public int Rating_value { get; set; }
-    public string Comment { get; set; }
-    public DateOnly Review_Date { get; set; }
-}
+    public class CustomerReview
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public int CustomerId { get; set; }
+        public Customer.Customer Customer { get; set; }
+
+        [Required]
+        public string CustomerName { get; set; }
+
+        [Required]
+        public int OrderId { get; set; }
+        public DateOnly OrderDate { get; set; }
+
+        [Required]
+        public int ProductId { get; set; }
+        public Product.Product Product { get; set; }
+
+        [Required]
+        public string ProductName { get; set; }
+
+        [Required]
+        [Range(1, 5)]
+        public int RatingValue { get; set; }
+
+        public string Comment { get; set; }
+        public DateOnly ReviewDate { get; set; }
+    }
+} 
