@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  product:
+    build:
+      context: "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp"
+      dockerfile: "Product/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Product.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "product:dev"
+    ports: []
+    volumes:
+    - "/Users/ram/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp/Product:/app:rw"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp:/src:rw"
+    working_dir: "/app"

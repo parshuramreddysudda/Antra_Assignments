@@ -1,4 +1,3 @@
-using ApplicationCore.Entities.Customer;
 using ApplicationCore.Model.Request;
 using ApplicationCore.Model.Response;
 using AutoMapper;
@@ -9,9 +8,7 @@ public class ApplicationMapper:Profile
 {
     public ApplicationMapper()
     {
-        Console.WriteLine("Mapping Done From Application Mapper");
-        CreateMap<CustomerRequestModel, Customer>().ReverseMap();
-        CreateMap<CustomerResponseModel,Customer>().ReverseMap(); // Mapping from CustomerEntities.Customer to CustomerResponseModel
+        Console.WriteLine("Mapping Done From Application Mapper"); 
         //CreateMap<ProductResponseModel, Product>().ReverseMap();
     }
 }

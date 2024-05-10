@@ -1,0 +1,9 @@
+﻿services:
+  product:
+    image: product
+    build:
+      context: .
+      dockerfile: Product/Dockerfile
+    
+    ports:
+      - 43156:8080

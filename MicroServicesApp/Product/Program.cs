@@ -19,7 +19,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Service Injection
-builder.Services.AddScoped<ICustomerServiceAsync, CustomerServiceAsync>();
 builder.Services.AddScoped<IProductServiceAsync,ProductServiceAsync>();
 builder.Services.AddScoped<IAccountService,AccountServiceAsync>();
 builder.Services.AddCors(options =>
@@ -53,7 +52,6 @@ builder.Services.AddAuthentication(options =>
 //Dependency Injection
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
-builder.Services.AddScoped<ICustomerRepositoryAsync, CustomerRespositoryAsync>();
 builder.Services.AddScoped<IProductCategoryRepositoryAsync, ProductCategoryRepositoryAsync>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddControllers();
