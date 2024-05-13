@@ -4,6 +4,20 @@
     build:
       context: .
       dockerfile: Product/Dockerfile
-    
     ports:
       - 43156:8080
+  orders:
+    image: orders
+    build:
+      context: .
+      dockerfile: Orders/Orders/Dockerfile
+    ports:
+      - 43157:8080
+
+  apigateway:
+    image: apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - 43158:8080

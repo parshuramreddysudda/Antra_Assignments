@@ -9,6 +9,7 @@ namespace ECommerceAPI.Controller
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductServiceAsync _productServiceAsync;
@@ -20,7 +21,7 @@ namespace ECommerceAPI.Controller
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllProducts()
         {
             return Ok(await _productServiceAsync.GetAllProductsAsync());
         }

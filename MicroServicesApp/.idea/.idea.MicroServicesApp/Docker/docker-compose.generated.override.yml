@@ -1,5 +1,43 @@
 # This is a generated file. Not intended for manual editing.
 services:
+  apigateway:
+    build:
+      context: "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp"
+      dockerfile: "APIGateway/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/APIGateway.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "apigateway:dev"
+    ports: []
+    volumes:
+    - "/Users/ram/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp/APIGateway:/app:rw"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp:/src:rw"
+    working_dir: "/app"
+  orders:
+    build:
+      context: "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp"
+      dockerfile: "Orders/Orders/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Orders.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "orders:dev"
+    ports: []
+    volumes:
+    - "/Users/ram/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp/Orders/Orders:/app:rw"
+    - "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp:/src:rw"
+    working_dir: "/app"
   product:
     build:
       context: "/Users/ram/Documents/GitHub/Antra_Assignments/MicroServicesApp"
