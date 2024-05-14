@@ -1,0 +1,22 @@
+<p>department works!</p>
+
+<h1>departmentList</h1>
+
+<button (click)="filterData()">Show Data</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of this.updateDepartmentList" >
+<td>{{d.id}}</td>
+<td>{{d.name}}</td>
+<td>{{d.location}}</td>
+        </tr>
+    </tbody>
+</table>
