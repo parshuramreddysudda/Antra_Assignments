@@ -17,10 +17,10 @@ export class ProductService {
   getProductById(id:number): Observable<Product> {
     return this.http.get<Product>(environment.apiUrl+"/product/GetByID?id="+id);
   }
-  postProduct(product:Product,id:number):Observable<Product>{
+  updateProduct(product:Product,id:number):Observable<Product>{
     console.log(product);
     
-    return this.http.put<Product>(environment.apiUrl+"/Product?id="+6,product);
+    return this.http.put<Product>(environment.apiUrl+"/Product?id="+id,product);
   }
 
 }

@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
     { key: 'categoryId',value:'', label: 'Category ID', maxLength: 3, validators: [Validators.max(100), Validators.required] },
     { key: 'price', value:'', label: 'Price', maxLength: 3, validators: [Validators.maxLength(10), Validators.required] },
     { key: 'qty',value:'', label: 'Quantity', maxLength: 3, validators: [Validators.maxLength(4), Validators.required] },
-    { key: 'productImage',value:'', label: 'Product Image', maxLength: 100, validators: [Validators.maxLength(100), Validators.required] },
+    { key: 'product_Image',value:'', label: 'Product Image', maxLength: 100, validators: [Validators.maxLength(1000), Validators.required] },
     { key: 'sku', value:'',label: 'SKU', maxLength: 3, validators: [Validators.max(3)] },
   ];
 
@@ -80,14 +80,29 @@ export class ProductComponent implements OnInit {
     // Access form values
     const formData = this.productForm.value;
     console.log(formData);
-    this.productService.postProduct(formData,this.id).subscribe((data)=>{
-      alert("Product ID Not Found redirecting to Products Page")
-      this.router.navigate(['/products']);
-    },(err)=>{
-      console.log("Error is ",err);
-      
-    });
-  }
+    
+    this.productService.updateProduct(formData, this.id).subscribe(
+        (data) => {
+            // Product updated successfully
+            console.log("Product updated successfully:", data);
+            alert("Product updated successfully");
+            this.router.navigate(['/products']); // Redirect to products page
+        },
+        (err) => {
+            // Error occurred
+            console.error("Error updating product:", err);
+            let errorMessage = "An error occurred while updating the product.";
+            if (err.status === 404) {
+                errorMessage = "Product ID not found. Redirecting to Products page.";
+            } else if (err.error && err.error.message) {
+                errorMessage = err.error.message;
+            }
+            alert(errorMessage);
+            // this.router.navigate(['/products']); // Redirect to products page
+        }
+    );
+}
+
 
   resetForm() {
   // Reset formZ21wqA

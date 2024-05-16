@@ -6,7 +6,7 @@ export type Product ={
   category: ProductCategory;
   price: number;
   qty: number;
-  productImage: string;
+  product_Image: string;
   sku: string;
  [key: string]: any;
 }
