@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
     { key: 'categoryId',value:'', label: 'Category ID', maxLength: 3, validators: [Validators.max(100), Validators.required] },
     { key: 'price', value:'', label: 'Price', maxLength: 3, validators: [Validators.maxLength(10), Validators.required] },
     { key: 'qty',value:'', label: 'Quantity', maxLength: 3, validators: [Validators.maxLength(4), Validators.required] },
-    { key: 'product_Image',value:'', label: 'Product Image', maxLength: 100, validators: [Validators.maxLength(1000), Validators.required] },
+    { key: 'product_image',value:'', label: 'Product Image', maxLength: 100, validators: [Validators.maxLength(1000), Validators.required] },
     { key: 'sku', value:'',label: 'SKU', maxLength: 3, validators: [Validators.max(3)] },
   ];
 
