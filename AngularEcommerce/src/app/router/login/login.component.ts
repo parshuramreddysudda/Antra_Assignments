@@ -14,31 +14,32 @@ loginForm:any
 registerForm:any
 activeForm:'login' | 'register' ='login' 
 
-constructor(private fb:FormBuilder){
 
+constructor(private fb:FormBuilder){
+}
+ngOnInit(){
   this.loginForm=this.fb.group({
     email:['',Validators.required,Validators.email],
     password:['',Validators.required,Validators]
   })
-
-
 
   this.registerForm=this.fb.group({
     email:['',Validators.required,Validators.email],
     password:['',Validators.required,Validators]
   })
 }
-
 toggleForm(form:'login'|'register'){
   this.activeForm=form
 }
 
 login(){
+  alert("Login Form")
   if(this.loginForm.valid){
       alert("Valid Form")
   }
 }
 register(){
+  alert("Regoster Form")
   if(this.registerForm.valid){
       alert("Valid Form")
   }
