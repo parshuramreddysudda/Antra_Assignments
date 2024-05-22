@@ -18,9 +18,11 @@ export class ProductService {
     return this.http.get<Product>(environment.apiUrl+"/product/GetByID?id="+id);
   }
   updateProduct(product:Product,id:number):Observable<Product>{
-    console.log(product);
-    
     return this.http.put<Product>(environment.apiUrl+"/Product?id="+id,product);
+  }
+
+  createProduct(product:Product):Observable<Product>{
+    return this.http.put<Product>(environment.apiUrl+"/Product",product);
   }
 
 }

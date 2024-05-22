@@ -86,7 +86,7 @@ export class ProductComponent implements OnInit {
             // Product updated successfully
             console.log("Product updated successfully:", data);
             alert("Product updated successfully");
-            this.router.navigate(['/products']); // Redirect to products page
+            this.router.navigate(['/app/products']); // Redirect to products page
         },
         (err) => {
             // Error occurred

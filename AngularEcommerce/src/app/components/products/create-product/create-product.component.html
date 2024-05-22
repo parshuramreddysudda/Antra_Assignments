@@ -1,0 +1,36 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="max-w-lg mx-auto">
+    <div *ngFor="let control of formControlsConfig" class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700">{{ control.label }}</label>
+      
+      <!-- Display error messages for the current control -->
+      <div class="text-sm">
+        <span *ngIf="productForm.get(control.key)?.touched && productForm.get(control.key)?.invalid" class="text-xs text-red-500">
+          <!-- Display specific error messages based on control errors -->
+          <span *ngIf="productForm.get(control.key)?.hasError('required')">This field is required.</span>
+          <span *ngIf="productForm.get(control.key)?.hasError('maxlength')">Maximum length exceeded.</span>
+          <!-- Add more error messages for other validators if needed -->
+        </span>
+      </div>
+      
+      <input 
+        type="text" 
+        [formControlName]="control.key" 
+        [value]="control.value"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        placeholder="{{ control.label }}"
+      >
+    </div>
+  
+    <!-- Display general form error -->
+    <div *ngIf="productForm.invalid" class="mb-4">
+      <span class="text-xs text-red-500">
+        Please fill out all required fields correctly.
+      </span>
+    </div>
+  
+    <button type="submit" [ngClass]="{'bg-blue-500': productForm.valid, 'bg-gray-300': !productForm.valid}" class="px-4 py-2 font-bold text-white rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+        Update
+      </button>
+      
+  </form>
+  

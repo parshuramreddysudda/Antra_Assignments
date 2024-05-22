@@ -14,7 +14,7 @@
      
     <div *ngFor="let product of products">
         <div class="duration-500 bg-white shadow-md w-72 rounded-xl hover:scale-105 hover:shadow-xl" >
-            <a  target="_blank" [href]="'/products/' + product.id">
+            <a  target="_blank" [href]="'/app/products/' + product.id">
                 <img [src]="product.product_image ? product.product_image : 'https://i.pinimg.com/736x/4f/3e/13/4f3e1335713c28a9c9d1fa1643197019.jpg'" alt="Product" class="object-cover h-80 w-72 rounded-t-xl" />
                 <div class="px-4 py-3 w-72">
                     <span class="m-3 text-xs text-gray-400 uppercase">{{ product.name }}</span>
@@ -35,3 +35,4 @@
         </div>
     </div>
 </section>
+

@@ -46,6 +46,11 @@
          size++;
 
      }
+
+     public static void Main(string[] args)
+     {
+         
+     }
  }
  
  
@@ -64,6 +69,10 @@
 
  class MyList<T>
  {
+     public static void Main(string[] args)
+     {
+         
+     }
      private List<T> items = new List<T>();
 
      public void Add(T element)
@@ -129,7 +138,7 @@
      that will have common /CRUD/ operations so that it can work with any data source
  such as SQL Server, Oracle, In-Memory Data etc. Make sure you have a type constraint
      on T were it should be of reference type and can be of type Entity which has one
-     property called Id. IRepository<T> should have following methods
+     property called IRepository<T> should have following methods
  1. void Add(T item)
  2. void Remove(T item)
  Void Save()
@@ -149,6 +158,10 @@
 
  class Entity
  {
+     public static void Main(string[] args)
+     {
+         
+     }
      public int Id { get; set; }
  }
 

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-login',
@@ -15,17 +17,20 @@ registerForm:any
 activeForm:'login' | 'register' ='login' 
 
 
-constructor(private fb:FormBuilder){
+constructor(private fb:FormBuilder,
+  private router: Router,
+  private snackbar:MatSnackBar
+){
 }
 ngOnInit(){
   this.loginForm=this.fb.group({
-    email:['',Validators.required,Validators.email],
-    password:['',Validators.required,Validators]
+    email:['',[Validators.required,Validators.email]],
+    password:['',[Validators.required,Validators.minLength(8)]]
   })
 
   this.registerForm=this.fb.group({
-    email:['',Validators.required,Validators.email],
-    password:['',Validators.required,Validators]
+    email:['',[Validators.required,Validators.email]],
+    password:['',[Validators.required,Validators.minLength(8)]]
   })
 }
 toggleForm(form:'login'|'register'){
@@ -33,9 +38,15 @@ toggleForm(form:'login'|'register'){
 }
 
 login(){
-  alert("Login Form")
+  // alert("Login Form")
+  console.log("Login Form is ",this.loginForm.value);
+  
   if(this.loginForm.valid){
-      alert("Valid Form")
+    
+      this.snackbar.open("Form is Valid",'Close',{duration:3000, horizontalPosition: 'start',
+      verticalPosition: 'top',
+      panelClass: ['snackbar-top-left']})
+
   }
 }
 register(){

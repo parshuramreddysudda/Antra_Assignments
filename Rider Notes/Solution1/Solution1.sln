@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4", "Assignment4\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice", "Practice\Practice.csproj", "{14C3325B-37FF-41A2-8E8D-BAE6EB585361}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit", "XUnit\XUnit.csproj", "{46329EFB-A17A-4E37-B8C8-E318A394FCB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +40,9 @@ Global
 		{14C3325B-37FF-41A2-8E8D-BAE6EB585361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14C3325B-37FF-41A2-8E8D-BAE6EB585361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14C3325B-37FF-41A2-8E8D-BAE6EB585361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46329EFB-A17A-4E37-B8C8-E318A394FCB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46329EFB-A17A-4E37-B8C8-E318A394FCB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46329EFB-A17A-4E37-B8C8-E318A394FCB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46329EFB-A17A-4E37-B8C8-E318A394FCB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

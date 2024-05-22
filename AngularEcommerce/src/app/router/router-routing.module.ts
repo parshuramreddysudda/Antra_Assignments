@@ -6,20 +6,26 @@ import { HomeComponent } from '../components/home/home.component';
 import { ProductComponent } from '../components/products/product/product.component';
 import { NotfoundComponent } from '../components/notfound/notfound.component';
 import { LoginComponent } from './login/login.component';
-import path from 'path';
+import { CreateProductComponent } from '../components/products/create-product/create-product.component';
+import { DeleteProductComponent } from '../components/products/delete-product/delete-product.component';
+import { authGuardGuard } from '../guards/auth-guard.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'products',
-    component: ProductsComponent,
-    children: [{ path: ':id', component: ProductComponent }],
+    title:"Products",
+    children: [
+      {path:'',component:ProductsComponent,pathMatch:"full",canActivate:[authGuardGuard]},
+      {path:'create',component:CreateProductComponent,pathMatch:"full"},
+      {path:'delete',component:DeleteProductComponent,pathMatch:"full"},
+      { path: ':id', component: ProductComponent,pathMatch:"full"},
+    ],
   },
-  { path: 'customers', component: CustomersComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'products/:id', component: ProductComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', component: NotfoundComponent },
+  { path: 'customers', component: CustomersComponent,title:"Customers" }, // not lazy loading
+  { path: 'home', component: HomeComponent ,title:"Home"},
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: '**', component: NotfoundComponent,title:"404 - Not Found " },
 ];
 
 @NgModule({
