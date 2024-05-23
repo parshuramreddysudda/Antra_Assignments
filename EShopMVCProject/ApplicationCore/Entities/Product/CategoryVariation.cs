@@ -3,7 +3,7 @@ namespace ApplicationCore.Entities.Product;
 public class CategoryVariation
 {
     public int Id { get; set; }
-    public int Category_Id { get; set; }
-    public string Variation_Name { get; set; }= string.Empty;
-    public List<ProductCategory> ProductCategories { get; set; }
+    public int CategoryId { get; set; }
+    public string VariationName { get; set; } = string.Empty;
+    public ICollection<ProductCategory> ProductCategories { get; set; }
 }

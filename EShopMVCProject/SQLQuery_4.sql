@@ -1,12 +1,8 @@
-INSERT INTO CategoryVariation (CategoryId, Variationname) VALUES
-(2, 'Color'),
-( 2, 'Storage Capacity'),
-( 3, 'Color'),
-( 3, 'Storage Capacity');
 
-
+drop TABLE ProductCategories
+DBCC CHECKIDENT ('ProductCategories', RESEED, 0);
 INSERT INTO ProductCategories (Name, ParentCategoryId) VALUES
-('Electronics', NULL),
+('Electronics', 2),
 ('Smartphones', 1),
 ('Laptops', 1),
 ('Tablets', 1),
@@ -27,4 +23,60 @@ INSERT INTO ProductCategories (Name, ParentCategoryId) VALUES
 ('Drones', 1),
 ('Projectors', 1);
 
--- Add more variations as needed
+
+
+
+select * from ProductCategories
+select * from Products
+
+INSERT INTO Products (Name, Description, CategoryId, Price, Qty, Product_image, SKU) VALUES
+('Laptop X', 'High performance laptop', 1, 1200, 10, 'laptop_x_img.jpg', 'LX-001');
+('Smartphone Z', 'Latest model smartphone', 2, 700, 15, 'smartphone_z_img.jpg', 'SMZ-002'),
+('Tablet A', 'Portable tablet device', 2, 500, 20, 'tablet_a_img.jpg', 'TAB-003'),
+('Camera B', 'Professional DSLR camera', 1, 1500, 8, 'camera_b_img.jpg', 'CAM-004'),
+('Headphones C', 'Noise-cancelling headphones', 1, 200, 30, 'headphones_c_img.jpg', 'HP-005'),
+('Smartwatch D', 'Fitness tracking smartwatch', 1, 300, 25, 'smartwatch_d_img.jpg', 'SW-006'),
+('Speaker E', 'Bluetooth speaker system', 1, 100, 40, 'speaker_e_img.jpg', 'SPK-007'),
+('Monitor F', 'Ultra-wide gaming monitor', 1, 800, 12, 'monitor_f_img.jpg', 'MON-008'),
+('Keyboard G', 'Mechanical gaming keyboard', 1, 150, 35, 'keyboard_g_img.jpg', 'KB-009'),
+('Mouse H', 'Wireless gaming mouse', 1, 80, 50, 'mouse_h_img.jpg', 'MS-010'),
+('Printer I', 'All-in-one printer scanner', 1, 250, 18, 'printer_i_img.jpg', 'PRN-011'),
+('External HDD J', 'Portable external hard drive', 1, 120, 60, 'external_hdd_j_img.jpg', 'HDD-012'),
+('VR Headset K', 'Virtual reality headset', 1, 400, 10, 'vr_headset_k_img.jpg', 'VR-013'),
+('Microphone L', 'Studio-quality microphone', 1, 180, 22, 'microphone_l_img.jpg', 'MIC-014'),
+('Drone M', 'Quadcopter drone with camera', 1, 1000, 5, 'drone_m_img.jpg', 'DRN-015'),
+('Projector N', 'HD home theater projector', 1, 600, 14, 'projector_n_img.jpg', 'PRJ-016'),
+('Wireless Router O', 'High-speed Wi-Fi router', 1, 120, 30, 'router_o_img.jpg', 'RTR-017'),
+('Fitness Tracker P', 'Activity and sleep tracker', 1, 80, 40, 'fitness_tracker_p_img.jpg', 'FT-018'),
+('Gaming Console Q', 'Next-gen gaming console', 1, 400, 20, 'gaming_console_q_img.jpg', 'GC-019'),
+('Smart Scale R', 'Digital body weight scale', 1, 50, 55, 'smart_scale_r_img.jpg', 'SS-020'),
+('Smart Thermostat S', 'Home automation thermostat', 1, 200, 25, 'smart_thermostat_s_img.jpg', 'ST-021'),
+('Security Camera T', 'Indoor/outdoor security camera', 1, 150, 30, 'security_camera_t_img.jpg', 'SC-022'),
+('LED Bulbs U', 'Energy-efficient LED light bulbs', 1, 15, 100, 'led_bulbs_u_img.jpg', 'BLB-023'),
+('Power Bank V', 'Portable phone charger', 1, 40, 45, 'power_bank_v_img.jpg', 'PB-024'),
+('Wireless Earbuds W', 'Bluetooth earphones', 1, 120, 20, 'wireless_earbuds_w_img.jpg', 'WE-025'),
+('USB Flash Drive X', 'Portable data storage', 1, 20, 80, 'usb_flash_drive_x_img.jpg', 'USB-026'),
+('Car Charger Y', 'Fast-charging car adapter', 1, 25, 65, 'car_charger_y_img.jpg', 'CC-027'),
+('Wireless Charging Pad Z', 'Qi-enabled charging pad', 1, 30, 70, 'wireless_charging_pad_z_img.jpg', 'CP-028'),
+('Desk Lamp AA', 'Adjustable LED desk lamp', 1, 50, 35, 'desk_lamp_aa_img.jpg', 'DL-029'),
+('Bluetooth Keyboard AB', 'Wireless keyboard for tablets', 1, 70, 25, 'bluetooth_keyboard_ab_img.jpg', 'KB-030'),
+('Smart Plug AC', 'Wi-Fi smart outlet plug', 1, 20, 60, 'smart_plug_ac_img.jpg', 'SP-031'),
+('Portable Speaker AD', 'Compact Bluetooth speaker', 1, 80, 40, 'portable_speaker_ad_img.jpg', 'PS-032'),
+('Smart Bulb AE', 'App-controlled LED light bulb', 1, 25, 50, 'smart_bulb_ae_img.jpg', 'BLB-033'),
+('Wireless Mouse AF', 'Ergonomic wireless mouse', 1, 50, 30, 'wireless_mouse_af_img.jpg', 'MS-034'),
+('USB-C Cable AG', 'High-speed charging cable', 1, 15, 90, 'usb_c_cable_ag_img.jpg', 'UC-035'),
+('Ethernet Cable AH', 'CAT6 network cable', 1, 10, 120, 'ethernet_cable_ah_img.jpg', 'EC-036'),
+('Smart Doorbell AI', 'Video doorbell with motion detection', 1, 150, 20, 'smart_doorbell_ai_img.jpg', 'DB-037'),
+('Wireless Headset AJ', 'Over-ear wireless headphones', 1, 100, 25, 'wireless_headset_aj_img.jpg', 'WH-038'),
+('Wireless Charger AK', 'Fast wireless charging stand', 1, 40, 50, 'wireless_charger_ak_img.jpg', 'WC-039'),
+('Smart Speaker AL', 'Voice-controlled smart speaker', 1, 120, 15, 'smart_speaker_al_img.jpg', 'SS-040'),
+('Webcam AM', 'HD video webcam with microphone', 1, 60, 30, 'webcam_am_img.jpg', 'WC-041'),
+('External SSD AN', 'High-speed external solid-state drive', 1, 200, 10, 'external_ssd_an_img.jpg', 'SSD-042'),
+('Bluetooth Headphones AO', 'Wireless stereo headset', 1, 90, 35, 'bluetooth_headphones_ao_img.jpg', 'BH-043'),
+('Wireless Keyboard AP', 'Compact wireless keyboard', 1, 60, 40, 'wireless_keyboard_ap_img.jpg', 'KB-044'),
+('Portable Monitor AQ', 'USB-powered portable monitor', 1, 250, 20, 'portable_monitor_aq_img.jpg', 'MON-045'),
+('Wireless Earphones AR', 'Sweatproof sport earbuds', 1, 80, 25, 'wireless_earphones_ar_img.jpg', 'WE-046'),
+('USB Hub AS', 'Multi-port USB adapter', 1, 20, 50, 'usb_hub_as_img.jpg', 'UH-047'),
+('Gaming Keyboard AT', 'RGB backlit gaming keyboard', 1, 120, 30, 'gaming_keyboard_at_img.jpg', 'KB-048'),
+('Gaming Mouse AU', 'Programmable gaming mouse', 1, 70, 40, 'gaming_mouse_au_img.jpg', 'MS-049'),
+('Gaming Headset AV', 'Immersive gaming headset', 1, 100, 35, 'gaming_headset_av_img.jpg', 'GH-050');
