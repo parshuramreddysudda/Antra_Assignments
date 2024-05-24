@@ -39,9 +39,14 @@ public class AppDbContext:IdentityDbContext<ApplicationUser,IdentityRole<int>,in
         var adminUser = new ApplicationUser()
         {
             Id = 1,
-            UserName = "admin@admin.com",
+            Email = "admin@admin.com",
+            NormalizedEmail = "ADMIN@ADMIN.COM",
+            UserName = "Admin",
+            SecurityStamp = "124524543645756ascaaf",
+            NormalizedUserName = "ADMIN@ADMIN.COM",
             FirstName = "Administrator",
             LastName = "Reddy",
+            UserId = Guid.NewGuid().ToString(),
             DateCreated = DateTime.UtcNow
         };
         adminUser.PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(adminUser, "12345678");

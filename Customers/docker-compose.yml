@@ -1,0 +1,8 @@
+﻿services:
+  claimbasedauthentication:
+    image: claimbasedauthentication
+    build:
+      context: .
+      dockerfile: ClaimBasedAuthentication/Dockerfile
+    ports:
+      - 43200:8080

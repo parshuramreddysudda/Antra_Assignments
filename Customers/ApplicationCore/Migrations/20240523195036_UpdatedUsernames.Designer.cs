@@ -4,6 +4,7 @@ using ApplicationCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240523195036_UpdatedUsernames")]
+    partial class UpdatedUsernames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,64 +57,64 @@ namespace ApplicationCore.Migrations
                             Id = 1,
                             ClaimType = "Admin",
                             ClaimValue = "Add Manager",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9060),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210)
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "Admin",
                             ClaimValue = "Edit Manager",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210)
                         },
                         new
                         {
                             Id = 3,
                             ClaimType = "Admin",
                             ClaimValue = "Delete Manager",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8210)
                         },
                         new
                         {
                             Id = 4,
                             ClaimType = "Admin",
                             ClaimValue = "Get Manager",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220)
                         },
                         new
                         {
                             Id = 5,
                             ClaimType = "Manager",
                             ClaimValue = "Add Employee",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220)
                         },
                         new
                         {
                             Id = 6,
                             ClaimType = "Manager",
                             ClaimValue = "Edit Employee",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220)
                         },
                         new
                         {
                             Id = 7,
                             ClaimType = "Manager",
                             ClaimValue = "Delete Employee",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220)
                         },
                         new
                         {
                             Id = 8,
                             ClaimType = "Manager",
                             ClaimValue = "Get Employee",
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070),
-                            DateModified = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9070)
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220),
+                            DateModified = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8220)
                         });
                 });
 
@@ -130,9 +133,6 @@ namespace ApplicationCore.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -144,10 +144,6 @@ namespace ApplicationCore.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -172,29 +168,17 @@ namespace ApplicationCore.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ProfilePic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -217,24 +201,19 @@ namespace ApplicationCore.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "756789fd-2371-4e9d-9956-2d39cfd180fe",
-                            CustomerId = 0,
-                            DateCreated = new DateTime(2024, 5, 23, 23, 49, 42, 186, DateTimeKind.Utc).AddTicks(9210),
+                            ConcurrencyStamp = "b88559af-9702-426e-81b2-3c4978fd4ba2",
+                            DateCreated = new DateTime(2024, 5, 23, 19, 50, 35, 817, DateTimeKind.Utc).AddTicks(8360),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Administrator",
-                            Gender = "",
                             LastName = "Reddy",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFVlp1I6f3m8U7mBpgBWVZ+oWRjsBAbNPBsHIlyq2z5JGzLjuIEiiHBxk+joYtfxMw==",
-                            Phone = "",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKbg8crFzAk1vP809RkoNzk2R0sDSOdeDDqgnuFYc8QsDtK1nIBAmsT89JundoOeNg==",
                             PhoneNumberConfirmed = false,
-                            ProfilePic = "",
                             SecurityStamp = "124524543645756ascaaf",
                             TwoFactorEnabled = false,
-                            UserId = "0b11ede9-4119-4987-bccd-aa22625e386e",
                             UserName = "Admin"
                         });
                 });

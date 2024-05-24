@@ -4,3 +4,9 @@
     build:
       context: .
       dockerfile: ECommerceAPI/Dockerfile
+
+  ecommerceapi-1:
+    image: ecommerceapi-1
+    build:
+      context: .
+      dockerfile: ECommerceAPI/Dockerfile

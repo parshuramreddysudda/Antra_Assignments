@@ -21,3 +21,9 @@
       dockerfile: APIGateway/Dockerfile
     ports:
       - 43158:8080
+
+  apigateway-1:
+    image: apigateway-1
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile

@@ -14,4 +14,10 @@ public class Constants
     public static readonly string EDIT_EMPLOYEE_CLAIM_VALUE = "Edit Employee";
     public static readonly string DELETE_EMPLOYEE_CLAIM_VALUE = "Delete Employee";
     public static readonly string GET_EMPLOYEE_CLAIM_VALUE = "Get Employee";
+    public static readonly string Issuer = "AppClaim";
+    public static readonly string Audience = "AppClaim";
+    public static readonly string JSON_SECRET_KEY = "ThisisJSONSECRETKEYWOTHSOMERANDOMSTRINGFORSECURITY";
+    
+    
+    
 }

@@ -1,10 +1,14 @@
+using System.Text;
 using ApplicationCore;
 using ApplicationCore.Entities.ApplicationUser;
+using Claim.Helper;
 using Claim.Service.IServices;
 using Claim.Service.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +23,26 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDB"));
 });
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Constants.JSON_SECRET_KEY)),
+        ValidateAudience = true,
+        ValidIssuer = Constants.Issuer,
+        ValidAudience = Constants.Audience,
+        RequireExpirationTime = true
+
+    };
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,10 +53,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
- 
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+    endpoints.MapControllers();
+});
+
+app.Run();
