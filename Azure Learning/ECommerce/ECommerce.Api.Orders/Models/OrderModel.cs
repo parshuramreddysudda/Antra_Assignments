@@ -1,3 +1,5 @@
+using ECommerce.Api.Orders.DB;
+
 namespace ECommerce.Api.Orders.Models;
 
 public class OrderModel
@@ -9,4 +11,5 @@ public class OrderModel
     public string PaymentMethod { get; set; }
     public string ShippingAddress { get; set; }
     public decimal BillAmount { get; set; }
+    public List<OrderItem> Items { get; set; }
 }

@@ -1,44 +1,49 @@
+
+using ECommerce.Api.Search.Interfaces;
+using ECommerce.Api.Search.Services;
+using Microsoft.EntityFrameworkCore;
+using Polly;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddControllers();
+// builder.Services.AddDbContext<ProductsDbContext>(optionsAction =>
+// {
+//     optionsAction.UseInMemoryDatabase("Products");
+// });
+builder.Services.AddScoped<ISearchService, SearchService>();
+builder.Services.AddScoped<IOrderService, OrdersService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddHttpClient("OrdersService", configureClient =>
 {
+    configureClient.BaseAddress = new Uri(builder.Configuration["Services:Orders"]);
+});
+builder.Services.AddHttpClient("ProductsService", configureClient =>
+{
+    configureClient.BaseAddress = new Uri(builder.Configuration["Services:Products"]);
+}).AddTransientHttpErrorPolicy(policy =>
+    policy.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
+builder.Services.AddHttpClient("CustomerService", configureClient =>
+{
+    configureClient.BaseAddress = new Uri(builder.Configuration["Services:Customers"]);
+}).AddTransientHttpErrorPolicy(policy =>
+    policy.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
+builder.Services.AddAutoMapper(typeof(Program));
+var app = builder.Build();
+ {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
+app.UseRouting();
+app.UseEndpoints(options =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
-
+    options.MapControllers();
+});
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
