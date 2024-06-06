@@ -11,7 +11,7 @@ import { DeleteProductComponent } from '../components/products/delete-product/de
 import { authGuardGuard } from '../guards/auth-guard.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {path:'',redirectTo:'home',pathMatch:'full'},
   {
     path: 'products',
     title:"Products",
@@ -24,7 +24,6 @@ const routes: Routes = [
   },
   { path: 'customers', component: CustomersComponent,title:"Customers" }, // not lazy loading
   { path: 'home', component: HomeComponent ,title:"Home"},
-  {path:'',redirectTo:'home',pathMatch:'full'},
   { path: '**', component: NotfoundComponent,title:"404 - Not Found " },
 ];
 

@@ -10,8 +10,8 @@ public class ECommerenceDbContext:IdentityDbContext<ApplicationUser>
 {
     public ECommerenceDbContext(DbContextOptions<ECommerenceDbContext> options):base(options)
     {
-        
     }
+    
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
     public DbSet<Customer> Customers { get; set; }

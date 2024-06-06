@@ -20,9 +20,7 @@ export class ProductService {
   updateProduct(product:Product,id:number):Observable<Product>{
     return this.http.put<Product>(environment.apiUrl+"/Product?id="+id,product);
   }
-
   createProduct(product:Product):Observable<Product>{
     return this.http.put<Product>(environment.apiUrl+"/Product",product);
   }
-
 }

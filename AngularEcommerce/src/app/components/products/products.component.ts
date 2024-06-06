@@ -16,7 +16,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class ProductsComponent {
 
-  constructor(private service:ProductService){}
+  constructor(private service:ProductService){
+  }
 
   ngOnInit(){
     this.getAllProducts();
