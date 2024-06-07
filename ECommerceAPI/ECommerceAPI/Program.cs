@@ -1,4 +1,5 @@
 using System.Text;
+using ApplicationCore.Constants;
 using ApplicationCore.Entities.ApplicationUser;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
@@ -25,21 +26,23 @@ builder.Services.AddScoped<IAccountService,AccountServiceAsync>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.SaveToken = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters = new TokenValidationParameters
+    options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateIssuer = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Constants.JSON_SECRET_KEY)),
         ValidateAudience = true,
-        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-        ValidAudience = builder.Configuration["JWT:ValidAudience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        ValidIssuer = Constants.Issuer,
+        ValidAudience = Constants.Audience,
+        RequireExpirationTime = true
+
     };
 });
+
 
 //Dependency Injection
 builder.Services.AddAutoMapper(typeof(Program));

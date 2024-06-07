@@ -26,7 +26,6 @@
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ECommerceAPI.props
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/scopedcss/bundle/ECommerceAPI.styles.css
-/Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/ECommerceAPI.csproj.CopyComplete
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/ECommerceAPI.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/refint/ECommerceAPI.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/ECommerceAPI.pdb
@@ -265,3 +264,4 @@
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/ECommerceAPI/ECommerceAPI/obj/Debug/net8.0/ECommerc.83EB260D.Up2Date
