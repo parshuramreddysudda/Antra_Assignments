@@ -65,6 +65,8 @@ export class ProductComponent implements OnInit {
   getProduct(id:number){
     this.productService.getProductById(id).subscribe((data)=>{
       
+      console.log("Product Loaded ",data);
+      
       Object.keys(data).forEach((key) => {
         // console.log("Data is ",data);
         if (this.productForm.controls[key]) {  
@@ -86,7 +88,7 @@ export class ProductComponent implements OnInit {
             // Product updated successfully
             console.log("Product updated successfully:", data);
             alert("Product updated successfully");
-            this.router.navigate(['/app/products']); // Redirect to products page
+            this.router.navigate(['/products']); // Redirect to products page
         },
         (err) => {
             // Error occurred

@@ -1,8 +1,10 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
 import { Product } from '../types/product';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { error } from 'node:console';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-products',
@@ -14,9 +16,11 @@ import { RouterOutlet } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
 
-  constructor(private service:ProductService){
+  constructor(private service:ProductService,
+    private loginService:LoginService
+  ){
   }
 
   ngOnInit(){
@@ -26,11 +30,23 @@ export class ProductsComponent {
   }
   
   public products!: Product[];
+  public errorMessage:string='';
   
   getAllProducts(){
-  this.service.getAllProducts().subscribe((data)=>{
-    this.products=data
-})
+    this.service.getAllProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+      },
+      error: (error) => {
+        this.errorMessage = error.message;
+        console.error("Error While Loading Products", error);
+      },
+      complete: () => {
+        // This is optional and can be used if there's something to do after completion
+        console.log("Products loading completed");
+      }
+    });
   }
+    
 
 }

@@ -12,15 +12,15 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.apiUrl+"/product/");
+    return this.http.get<Product[]>(environment.apiUrl+"/Products/");
   }
   getProductById(id:number): Observable<Product> {
-    return this.http.get<Product>(environment.apiUrl+"/product/GetByID?id="+id);
+    return this.http.get<Product>(environment.apiUrl+"/Products/"+id);
   }
   updateProduct(product:Product,id:number):Observable<Product>{
-    return this.http.put<Product>(environment.apiUrl+"/Product?id="+id,product);
+    return this.http.put<Product>(environment.apiUrl+"/Products/"+id,product);
   }
   createProduct(product:Product):Observable<Product>{
-    return this.http.put<Product>(environment.apiUrl+"/Product",product);
+    return this.http.put<Product>(environment.apiUrl+"/Products",product);
   }
 }

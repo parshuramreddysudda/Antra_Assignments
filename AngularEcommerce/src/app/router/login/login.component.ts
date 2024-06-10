@@ -4,12 +4,14 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar'
 import { LoginService } from '../../services/login/login.service';
+import { environment } from '../../../environments/environment.development';
+import { NgToastComponent, NgToastModule, NgToastService, ToastMessage } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
-  templateUrl: './login.component.html',
+  imports: [ReactiveFormsModule,CommonModule,NgToastModule],
+templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
@@ -20,7 +22,7 @@ activeForm:'login' | 'register' ='login'
 
 constructor(private fb:FormBuilder,
   private router: Router,
-  private snackbar:MatSnackBar,
+  private toast:NgToastService,
   private loginService:LoginService
 ){
 }
@@ -41,10 +43,9 @@ toggleForm(form:'login'|'register'){
 
 login(){
   // alert("Login Form")
-  console.log("Login Form is ",this.loginForm.value);
+  // console.log("Login Form is ",this.loginForm.value);
   
   if(this.loginForm.valid){
-
 
     const loginDetails={
       email:this.loginForm.value?.email,
@@ -52,37 +53,23 @@ login(){
     }
     this.loginService.login(loginDetails).subscribe(
       (data)=>{
-        this.openSnackBar('Authentication successful', 'success-snackbar');
         console.log(data.token);
-        localStorage.setItem("AngularCookie",data.token);
-        
+        // this.toast.danger('Wrong Email and Password');
+        this.loginService.setToken(data.token);
         
       },
       (err) =>{
         console.log("Authentication Failed ",err.error);
-        this.openSnackBar('Wrong Email and Password', 'error-snackbar');
+        this.toast.danger('Wrong Email and Password');
       
       }
     );
-    
- 
-
   }
 }
 register(){
-  alert("Regoster Form")
+  alert("Register Form")
   if(this.registerForm.valid){
       alert("Valid Form")
   }
 }
-
-openSnackBar(message: string, panelClass: string): void {
-  const config = new MatSnackBarConfig();
-  config.duration = 3000;
-  config.horizontalPosition = 'start';
-  config.verticalPosition = 'top';
-  config.panelClass = [panelClass];
-  this.snackbar.open(message, 'Close', config);
-}
-
 }
