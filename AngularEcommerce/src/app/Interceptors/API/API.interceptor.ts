@@ -9,7 +9,7 @@ import { LoginService } from '../../services/login/login.service';
 export class APIInterceptor implements HttpInterceptor {
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private loginService: LoginService
+    private loginService: LoginService     
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

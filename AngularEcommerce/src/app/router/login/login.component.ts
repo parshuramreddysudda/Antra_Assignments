@@ -58,10 +58,17 @@ login(){
         this.loginService.setToken(data.token);
         
       },
-      (err) =>{
-        console.log("Authentication Failed ",err.error);
-        this.toast.danger('Wrong Email and Password');
       
+      (err) =>{
+        if (err.status === 0) {
+          // Handle network error (service is down or unreachable)
+          console.log("Service is unavailable.");
+          this.toast.danger('Service is unavailable. Please try again later.');
+        }
+        else{
+        console.log("Authentication Failed ",err.error);
+        this.toast.danger('Wrong Email and Password'+err.error);
+        }
       }
     );
   }

@@ -1,0 +1,8 @@
+﻿services:
+  cart:
+    image: cart
+    build:
+      context: .
+      dockerfile: Cart/Dockerfile
+    ports:
+      - 43159:8080

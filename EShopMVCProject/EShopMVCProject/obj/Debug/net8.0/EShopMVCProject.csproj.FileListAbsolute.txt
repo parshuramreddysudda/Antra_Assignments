@@ -134,10 +134,10 @@
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/obj/Debug/net8.0/EShopMVCProject.csproj.AssemblyReference.cache
-/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/obj/Debug/net8.0/EShopMVCProject.csproj.CopyComplete
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/ApplicationCore.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/Infrastructure.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/ApplicationCore.pdb
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/Infrastructure.pdb
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/AutoMapper.dll
 /Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/ram/Documents/GitHub/Antra_Assignments/EShopMVCProject/EShopMVCProject/obj/Debug/net8.0/EShopMVC.DAE81667.Up2Date
