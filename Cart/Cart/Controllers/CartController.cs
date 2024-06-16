@@ -22,12 +22,16 @@ namespace Cart.Controllers
                 return StatusCode(500, new { message = "An error occurred while fetching the carts.", details = ex.Message });
             }
         }
-        [HttpGet]
-        public async Task<ActionResult<List<Entities.Cart>>> GetByUserId(string userId)
+        [HttpGet("GetByUserId")]
+        public async Task<ActionResult<List<Entities.Cart>>> GetByUserId([FromQuery] string userId)
         {
             try
             {
                 var carts = await cartService.GetByUserIdAsync(userId);
+                if (carts == null || carts.Count == 0)
+                {
+                    return NotFound(new { message = "No carts found for the given user ID." });
+                }
                 return Ok(carts);
             }
             catch (Exception ex)
@@ -36,6 +40,7 @@ namespace Cart.Controllers
                 return StatusCode(500, new { message = "An error occurred while fetching the carts.", details = ex.Message });
             }
         }
+
         [HttpGet("{id:length(24)}")]
         public async Task<ActionResult<Entities.Cart>> Get(string id)
         {

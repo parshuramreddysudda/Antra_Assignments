@@ -52,12 +52,12 @@ namespace ClaimBasedAuthentication
                         
                         userDTO.Claims.Add(new UserClaimDTO(){ClaimType = Constants.ROLE_ADMIN,ClaimValue = role});
                     }
-                    if (role==Constants.ROLE_MANAGER)
+                    else if (role==Constants.ROLE_MANAGER)
                     {
                         
                         userDTO.Claims.Add(new UserClaimDTO(){ClaimType = Constants.ROLE_MANAGER,ClaimValue = role});
                     }
-                    if (role==Constants.ROLE_EMPLOYEE)
+                    else 
                     {
                         
                         userDTO.Claims.Add(new UserClaimDTO(){ClaimType = Constants.ROLE_EMPLOYEE,ClaimValue = role});
@@ -65,9 +65,13 @@ namespace ClaimBasedAuthentication
 
                     userDTO.Id = tempUser.Id;
                     userDTO.FullName = tempUser.FirstName;
+                    
                     userDTO.UserId = tempUser.UserId;
                     userDTO.Email = tempUser.Email;
                     userDTO.Role = role;
+                    userDTO.ProfilePic = tempUser.ProfilePic;
+                    userDTO.Phone = tempUser.Phone;
+                    userDTO.Gender = tempUser.Gender;
                     userDTO.Token = GenerateToken(tempUser,userDTO.Claims);
 
                     return userDTO;

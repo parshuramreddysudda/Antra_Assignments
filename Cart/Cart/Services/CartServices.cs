@@ -35,6 +35,6 @@ public class CartService
     public async Task RemoveAsync(string id) =>
         await _cartsCollection.DeleteOneAsync(x => x.Id == id);
     
-    public async Task GetByUserIdAsync(string id) =>
-        await _cartsCollection.Find( x => x.UserId   == id).ToListAsync();
+    public async  Task<List<Entities.Cart>> GetByUserIdAsync(string id) =>
+        await _cartsCollection.Find( x => x.UserId== id).ToListAsync();
 }

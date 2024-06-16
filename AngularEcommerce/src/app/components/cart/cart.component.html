@@ -1,0 +1,51 @@
+ 
+  <div class="container p-4 mx-auto bg-gray-100">
+    <h1 class="mb-4 text-3xl font-bold text-center text-gray-800">Your Shopping Cart</h1>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+
+      <!-- Empty Cart Message -->
+      <div *ngIf="cartItems.length === 0" class="flex flex-col items-center justify-center col-span-4 p-10 bg-white rounded-lg shadow-xl">
+        <img src="https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg" alt="Empty Cart" class="w-1/2 mb-6">
+        <p class="text-xl text-gray-700">Your cart is currently empty. Start adding some amazing products!</p>
+        <a href="/products" class="px-6 py-3 mt-4 text-white bg-blue-500 rounded-full hover:bg-blue-700">Start Shopping</a>
+      </div>
+
+      <!-- Cart Items Section -->
+      <div class="col-span-3">
+        <div *ngFor="let item of cartItems" class="flex items-center p-6 mb-5 bg-white rounded-lg shadow-lg">
+          <img class="object-cover w-24 h-24 mr-6 rounded-md" [src]="item.image" alt="{{ item.name }}">
+          <div class="flex-1">
+            <h2 class="text-xl font-semibold">{{ item.name }}</h2>
+            <p class="text-sm text-gray-600">{{ item.description }}</p>
+            <div class="flex items-center mt-4">
+              <span class="text-2xl font-bold text-green-600">{{ item.price | currency }}</span>
+              <input type="number" min="1" [(ngModel)]="item.quantity" class="w-20 p-2 ml-4 border rounded-md focus:ring-2 focus:ring-blue-300">
+            </div>
+          </div>
+          <button class="p-2 text-white bg-red-500 rounded-full hover:bg-red-700 focus:outline-none" (click)="removeFromCart(item)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Section -->
+      <div *ngIf="cartItems.length != 0" class="p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="mb-6 text-2xl font-semibold text-gray-800">Order Summary</h2>
+        <div class="flex justify-between mb-3">
+          <span class="text-lg">Subtotal</span>
+          <span class="text-lg">{{ cartSubtotal | currency }}</span>
+        </div>
+        <div class="flex justify-between mb-3">
+          <span class="text-lg">Tax</span>
+          <span class="text-lg">{{ cartTax | currency }}</span>
+        </div>
+        <div class="flex justify-between mb-5 text-xl font-bold">
+          <span>Total</span>
+          <span>{{ cartTotal | currency }}</span>
+        </div>
+        <button class="w-full py-3 text-xl text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none" (click)="checkout()">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>

@@ -4,6 +4,8 @@ import { NgToastModule, NgToastService, ToasterPosition } from 'ng-angular-popup
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
 import { LoginService } from './services/login/login.service';
+import { Store } from '@ngrx/store';
+import { LoginResponse } from './components/types/login';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,8 @@ export class AppComponent implements OnInit {
   ToasterPosition = ToasterPosition;
   userIsLoggedIn: boolean = false;
   isLoginPage:boolean = false;
+  userName = 'John Doe'; // This should be dynamic
+  userImage = 'https://via.placeholder.com/40'; // This should be dynamic
 
   ngOnInit(): void {
     // Initially set the userIsLoggedIn based on login status
@@ -30,7 +34,6 @@ export class AppComponent implements OnInit {
     this.loginService.loginStatusChange.subscribe((loggedIn: boolean) => {
       this.userIsLoggedIn = loggedIn;
     });
-
     this.router.events
     .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
     .subscribe((event: NavigationEnd) => {

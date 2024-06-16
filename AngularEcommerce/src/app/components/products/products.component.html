@@ -1,40 +1,45 @@
-<div class="p-10 text-center">
-    <h1 class="mb-4 text-4xl font-bold">ECommerce Products</h1>
-    <h4 *ngIf="products && products.length >= 0"> 
-        Products Count is {{products.length}}
+<!-- Improved styling for the ECommerce Products header -->
+<div class="p-10 text-center bg-gray-100">
+    <h1 class="mb-4 text-5xl font-extrabold text-gray-800">ECommerce Products</h1>
+    <h4 *ngIf="products && products.length >= 0" class="text-lg text-gray-600"> 
+        Products Count: <span class="text-blue-600">{{ products.length }}</span>
     </h4>
 </div>
 
-<section id="Projects" class="grid justify-center grid-cols-1 mx-auto mt-10 mb-5 w-fit lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14">
- 
-      <div *ngIf="errorMessage">
-        {{errorMessage}}
-        <h1>Something went wring while Loading products</h1>
-      </div>
-     <div *ngIf="products && products!.length==0" >
-        <h3>Error Accessing Products Page</h3>
-     </div>
-    <div *ngFor="let product of products">
-        <div class="duration-500 bg-white shadow-md w-72 rounded-xl hover:scale-105 hover:shadow-xl" >
-            <a  target="_blank" [href]="'/products/' + product.id">
-                <img [src]="product.product_image ? product.product_image : 'https://i.pinimg.com/736x/4f/3e/13/4f3e1335713c28a9c9d1fa1643197019.jpg'" alt="Product" class="object-cover h-80 w-72 rounded-t-xl" />
-                <div class="px-4 py-3 w-72">
-                    <span class="m-3 text-xs text-gray-400 uppercase">{{ product.name }}</span>
-                    <p class="block text-lg font-bold text-black capitalize truncate">{{ product.description }}</p>
-                    <div class="flex items-center">
-                        <p class="my-3 text-lg font-semibold text-black cursor-auto">$ {{ product.price }}</p>
-                            <p class="ml-2 text-sm text-gray-600 cursor-auto"> Cat ID {{ product.categoryId }}</p>
-                           
-                        <div class="ml-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </a>
+<!-- Grid layout adjustments and responsive design improvements -->
+<section id="Projects" class="grid grid-cols-1 gap-10 p-10 bg-white md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <!-- Error message styling -->
+    <div *ngIf="errorMessage" class="text-center text-red-500 col-span-full">
+        <h1 class="text-2xl font-bold">Something went wrong while loading products:</h1>
+        <p>{{ errorMessage }}</p>
+    </div>
+    <!-- No products error message -->
+    <div *ngIf="products && products!.length == 0" class="text-center col-span-full">
+        <h3 class="text-xl text-yellow-600">Error Accessing Products Page</h3>
+    </div>
+    <!-- Product card styling -->
+    <div *ngFor="let product of products" class="overflow-hidden bg-white border border-blue-200 rounded-lg shadow-lg hover:shadow-2xl">
+        <a target="_blank" [href]="'/products/' + product.id">
+            <img [src]="product.product_image.includes('http') ? product.product_image : 'https://previews.123rf.com/images/antonshaparenko/antonshaparenko1906/antonshaparenko190600349/125186506-product-vector-icon-illustration-creative-sign-from-quality-control-icons-collection-filled-flat.jpg'" alt="Product" class="object-cover w-full h-64 rounded-t-lg" />
+        </a>
+        <div class="p-6">
+            <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ product.name }}</h4>
+            <p class="mb-3 font-normal text-gray-700">{{ product.description }}........</p>
+            <div class="flex items-center justify-between">
+                <span class="text-xl font-bold text-gray-900">${{ product.price }}</span>
+                <span class="text-sm text-gray-500">Cat ID: {{ product.categoryId }}</span>
+                <button (click)="addToCart(product.id)" class="px-6 py-2 text-sm font-bold text-white transition-colors duration-200 transform bg-blue-600 rounded hover:bg-blue-500">
+                    Add to Cart
+                </button>
+            </div>
+            <div *ngIf="isAdmin" class="flex justify-end mt-4 space-x-3">
+                <a target="_blank" [href]="'/products/' + product.id">
+                    <button class="px-6 py-2 text-sm font-bold text-white transition-colors duration-200 transform bg-green-600 rounded hover:bg-green-500">Edit</button>
+                </a>
+                <button class="px-6 py-2 text-sm font-bold text-white transition-colors duration-200 transform bg-red-600 rounded hover:bg-red-500">
+                    Delete
+                </button>
+            </div>
         </div>
     </div>
 </section>
-

@@ -7,6 +7,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { routes } from './app.routes';
 import { APIInterceptor } from './Interceptors/API/API.interceptor';
 import { ErrorInterceptor } from './Interceptors/error/error.interceptor';
+import { provideState, provideStore } from '@ngrx/store';
+import { loginReducer } from './states/user/user.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,5 +21,7 @@ export const appConfig: ApplicationConfig = {
       useClass: APIInterceptor,
       multi: true
     },
+    provideStore(),
+    provideState({name:"Login",reducer:loginReducer})
   ]
 };
