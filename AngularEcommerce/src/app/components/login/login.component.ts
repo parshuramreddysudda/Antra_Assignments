@@ -6,8 +6,8 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar'
 import { LoginService } from '../../services/login/login.service';
 import { environment } from '../../../environments/environment.development';
 import { NgToastComponent, NgToastModule, NgToastService, ToastMessage } from 'ng-angular-popup';
-import { LoginResponse } from '../types/login';
 import { Store } from '@ngrx/store';
+import { AppState } from '../../states/app.state';
 import { addLoginInfo } from '../../states/user/user.action';
 
 @Component({
@@ -24,7 +24,7 @@ activeForm:'login' | 'register' ='login'
  
 
 constructor(private fb:FormBuilder,
-  private store:Store<{user:LoginResponse}>,
+  private store:Store<AppState>,
   private router: Router,
   private toast:NgToastService,
   private loginService:LoginService
@@ -57,11 +57,12 @@ login(){
     }
     this.loginService.login(loginDetails).subscribe(
       (data)=>{
-        console.log(data);
+        // console.log(data);
         // this.toast.danger('Wrong Email and Password');
         this.loginService.setToken(data.token);
-        // this.store.dispatch(addLoginInfo({...data}))
-        
+        // var user:LoginResponse;
+        // user.email=data.email;
+        this.store.dispatch(addLoginInfo({user:data}))
       },
       
       (err) =>{

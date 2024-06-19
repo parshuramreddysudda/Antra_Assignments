@@ -1,6 +1,6 @@
-import { LoginState } from "./user/user.reducer";
+import { ILoginState, } from "./user/user.reducer";
 
 
 export interface AppState{
-    user:LoginState
+    user:ILoginState
 }

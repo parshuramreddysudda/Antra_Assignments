@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { error } from 'node:console';
 import { LoginService } from '../../services/login/login.service';
-import { EventEmitter } from 'node:stream';
 
 @Component({
   selector: 'app-products',
@@ -31,12 +30,11 @@ export class ProductsComponent implements OnInit {
   }
   
   public products!: Product[];
-  @Output() handleAdd = new EventEmitter();
   public errorMessage:string='';
   public isAdmin:boolean=true;
   
   addToCart(id:any){
-this.handleAdd.emit(id)
+
   }
   getAllProducts(){
     this.service.getAllProducts().subscribe({

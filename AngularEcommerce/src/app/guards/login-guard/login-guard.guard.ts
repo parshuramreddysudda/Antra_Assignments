@@ -11,6 +11,7 @@ export const loginGuardGuard: CanActivateFn = (route, state) => {
   if(loginService.userIsLoggedIn()){
     toast.info("User already Logged in ")
     router.navigate(['home'])
+    return false;
   }
   return true;
 };

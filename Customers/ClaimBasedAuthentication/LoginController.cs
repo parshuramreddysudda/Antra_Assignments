@@ -4,6 +4,7 @@ using ApplicationCore.Entities.ApplicationUser;
 using Claim.Common.BindingModels;
 using Claim.DTO;
 using Claim.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -88,6 +89,64 @@ namespace ClaimBasedAuthentication
 
             return Ok();
         }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordBindingModel? model)
+        {
+            if (model == null || string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.OldPassword) || string.IsNullOrEmpty(model.NewPassword))
+            {
+                return BadRequest("Invalid request");
+            }
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            
+            if (result.Succeeded)
+            {
+                return Ok(new { Message = "Password has been updated successfully" });
+            }
+
+            return BadRequest(result.Errors);
+        }
+        
+        [Authorize]
+        [HttpPost("update-profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileBindingModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest("Invalid request");
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized("User not found");
+            }
+
+            // Update user properties
+            user.Email = model.Email ?? user.Email;
+            user.PhoneNumber = model.Phone ?? user.PhoneNumber;
+            user.FirstName = model.FirstName ?? user.FirstName;
+            user.LastName = model.LastName ?? user.LastName;
+            user.ProfilePic = model.ProfilePic ?? user.ProfilePic;
+            user.Gender = model.Gender ?? user.Gender;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { Message = "Profile has been updated successfully" });
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+    
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register([FromBody] RegisterBindingModel registerBindingModel)
         {

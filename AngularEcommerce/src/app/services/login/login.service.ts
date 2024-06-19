@@ -39,7 +39,6 @@ export class LoginService {
   }
 
   setToken(token: string): void {
- 
     this.cookieService.set(environment.Token, token);
     // Emit login status change
     this.loggedIn.next(true);

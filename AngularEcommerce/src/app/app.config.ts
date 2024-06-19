@@ -22,6 +22,6 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
     provideStore(),
-    provideState({name:"Login",reducer:loginReducer})
+    provideState({name:"user",reducer:loginReducer})
   ]
 };
