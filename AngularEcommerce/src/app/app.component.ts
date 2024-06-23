@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   fullName:string|null=null;
   loginState: Observable<ILoginState>; 
   userImage: string | undefined; 
+  role:string | null=null;
 
   constructor(
     private loginService: LoginService,
@@ -47,7 +48,11 @@ export class AppComponent implements OnInit {
     this.loginState.subscribe((data) => {
       this.fullName=data.user.fullName;
       this.userImage=data.user.profilePic;
+      this.role = data.user.role;
     });
+
+    console.log("Current role is "+this.role);
+    
   }
 
   logout(): void {

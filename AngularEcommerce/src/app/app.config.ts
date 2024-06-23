@@ -9,6 +9,8 @@ import { APIInterceptor } from './Interceptors/API/API.interceptor';
 import { ErrorInterceptor } from './Interceptors/error/error.interceptor';
 import { provideState, provideStore } from '@ngrx/store';
 import { loginReducer } from './states/user/user.reducer';
+import { provideStoreDevtools, StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment.development';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,12 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
     provideStore(),
+    provideStoreDevtools({
+      maxAge:25,
+      features:{
+        persist:true,
+      }
+    }),
     provideState({name:"user",reducer:loginReducer})
   ]
 };

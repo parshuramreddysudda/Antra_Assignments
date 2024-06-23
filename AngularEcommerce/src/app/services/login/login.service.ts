@@ -6,6 +6,9 @@ import { environment } from '../../../environments/environment.development';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+import { Register } from '../../components/types/register';
+import { Store } from '@ngrx/store';
+import { addLoginInfo } from '../../states/user/user.action';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +21,61 @@ export class LoginService {
     private http: HttpClient,
     private cookieService: SsrCookieService,
     private toast: NgToastService,
-    private router:Router
+    private router:Router,
+    private store:Store
   ) {
     // Initialize login status based on existing token
     this.loggedIn.next(this.userIsLoggedIn());
   }
 
-  login(credentials: any): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(environment.loginURl + "login", credentials);
+  login(credentials: any) {
+    this.http.post<LoginResponse>(environment.loginURl + "login", credentials).subscribe(
+      (data)=>{
+        // console.log(data);
+        // this.toast.danger('Wrong Email and Password');
+        this.setToken(data.token);
+        // var user:LoginResponse;
+        // user.email=data.email;
+        this.store.dispatch(addLoginInfo({user:data}))
+      },
+      
+      (err) =>{
+        if (err.status === 0) {
+          // Handle network error (service is down or unreachable)
+          console.log("Service is unavailable.");
+          this.toast.danger('Service is unavailable. Please try again later.');
+        }
+        else{
+        console.log("Authentication Failed ",err.error);
+        this.toast.danger(' '+err.error);
+        }
+      }
+    );
+  }
+
+  register(credentials: any){
+    return this.http.post<Register>(environment.loginURl + "login/register", credentials).subscribe(
+      (data)=>{
+        // console.log(data);
+        // this.toast.danger('Wrong Email and Password');
+        this.setToken(data.token);
+        // var user:LoginResponse;
+        // user.email=data.email;
+        this.store.dispatch(addLoginInfo({user:data}))
+      },
+      
+      (err) =>{
+        if (err.status === 0) {
+          // Handle network error (service is down or unreachable)
+          console.log("Service is unavailable.");
+          this.toast.danger('Service is unavailable. Please try again later.');
+        }
+        else{
+        console.log("Authentication Failed ",err.error);
+        this.toast.danger('',err.error[0]?.description);
+        }
+      }
+    );
   }
 
   userIsLoggedIn(): boolean {

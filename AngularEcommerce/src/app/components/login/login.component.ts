@@ -38,7 +38,13 @@ ngOnInit(){
 
   this.registerForm=this.fb.group({
     email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.minLength(8)]]
+    password:['',[Validators.required,Validators.minLength(8)]],
+    role:['',[]],
+    firstName:['',[Validators.required,Validators.minLength(4)]],
+    lastName:['',[Validators.required,Validators.minLength(4)]],
+    gender:['',Validators.minLength(1)],
+    phone:['',[]],
+    profilePic:['',[Validators.required]],
   })
 }
 toggleForm(form:'login'|'register'){
@@ -46,8 +52,6 @@ toggleForm(form:'login'|'register'){
 }
 
 login(){
-  // alert("Login Form")
-  // console.log("Login Form is ",this.loginForm.value);
   
   if(this.loginForm.valid){
 
@@ -55,34 +59,26 @@ login(){
       email:this.loginForm.value?.email,
       password:this.loginForm.value?.password
     }
-    this.loginService.login(loginDetails).subscribe(
-      (data)=>{
-        // console.log(data);
-        // this.toast.danger('Wrong Email and Password');
-        this.loginService.setToken(data.token);
-        // var user:LoginResponse;
-        // user.email=data.email;
-        this.store.dispatch(addLoginInfo({user:data}))
-      },
-      
-      (err) =>{
-        if (err.status === 0) {
-          // Handle network error (service is down or unreachable)
-          console.log("Service is unavailable.");
-          this.toast.danger('Service is unavailable. Please try again later.');
-        }
-        else{
-        console.log("Authentication Failed ",err.error);
-        this.toast.danger('Wrong Email and Password'+err.error);
-        }
-      }
-    );
+    this.loginService.login(loginDetails);
   }
 }
 register(){
-  alert("Register Form")
+  // alert("Register Form"+this.registerForm.valid)
+  console.log(this.registerForm);
+  
   if(this.registerForm.valid){
-      alert("Valid Form")
+      
+    const registerDetails={
+      email:this.registerForm.value?.email,
+      password:this.registerForm.value?.password,
+      role:'',
+      firstName:this.registerForm.value?.firstName,
+      lastName:this.registerForm.value?.lastName,
+      gender:this.registerForm.value?.gender,
+      phone:this.registerForm.value?.phone,
+      profilePic:this.registerForm.value?.profilePic,
+    }
+    this.loginService.register(registerDetails);
   }
 }
 }
