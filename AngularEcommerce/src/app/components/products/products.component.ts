@@ -5,6 +5,10 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { error } from 'node:console';
 import { LoginService } from '../../services/login/login.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../states/app.state';
+import { addToCart } from '../../states/cart/cart/cart.action';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +23,9 @@ import { LoginService } from '../../services/login/login.service';
 export class ProductsComponent implements OnInit {
 
   constructor(private service:ProductService,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private toast:NgToastService,
+    private store:Store<AppState>
   ){
   }
 
@@ -33,10 +39,12 @@ export class ProductsComponent implements OnInit {
   public errorMessage:string='';
   public isAdmin:boolean=true;
   
-  addToCart(id:any){
-
+  addToCart(product:Product){
+     console.log("Add to Product is ",product);
+      this.store.dispatch(addToCart({product:product}));
+      this.toast.success(product.name+" has been added from cart")
   }
-  getAllProducts(){
+  getAllProducts(){ 
     this.service.getAllProducts().subscribe({
       next: (data) => {
         this.products = data;

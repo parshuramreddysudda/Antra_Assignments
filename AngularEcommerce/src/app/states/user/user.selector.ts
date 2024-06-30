@@ -20,4 +20,4 @@ const selectLoginState = (state: AppState) => {
   export const selectUser = createSelector(
     selectLoginState,
     (user) => user // Selector to directly access 'user'
-  );
+  ); 

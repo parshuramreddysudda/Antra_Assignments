@@ -11,6 +11,10 @@ import { provideState, provideStore } from '@ngrx/store';
 import { loginReducer } from './states/user/user.reducer';
 import { provideStoreDevtools, StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.development';
+import { hydrationMetaReducer } from './states/Hydration/hyderation.reducer';
+import { appStoreConfig } from './states/app.state';
+import { EffectsModule, provideEffects } from '@ngrx/effects';
+import { AuthEffects } from './services/Helper/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +34,9 @@ export const appConfig: ApplicationConfig = {
         persist:true,
       }
     }),
-    provideState({name:"user",reducer:loginReducer})
+    provideEffects([AuthEffects]),
+    provideStore(appStoreConfig.reducers, {
+      // metaReducers: appStoreConfig.metaReducers
+    }),
   ]
 };

@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './states/app.state';
 import { selectFullName, selectorLoginState, selectUser } from './states/user/user.selector';
 import { ILoginState } from './states/user/user.reducer';
+import { selectorCartSize, selectorCartState } from './states/cart/cart/cart.selector';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   loginState: Observable<ILoginState>; 
   userImage: string | undefined; 
   role:string | null=null;
+  cartItemCount:number=0;
 
   constructor(
     private loginService: LoginService,
@@ -38,6 +40,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Initially set the userIsLoggedIn based on login status
     this.userIsLoggedIn = this.loginService.userIsLoggedIn();
+    this.store.select(selectorCartSize).subscribe((size)=>{
+      this.cartItemCount=size;
+    })
     // Subscribe to login status changes
     this.loginService.loginStatusChange.subscribe((loggedIn: boolean) => {
       this.userIsLoggedIn = loggedIn;
@@ -50,9 +55,7 @@ export class AppComponent implements OnInit {
       this.userImage=data.user.profilePic;
       this.role = data.user.role;
     });
-
     console.log("Current role is "+this.role);
-    
   }
 
   logout(): void {

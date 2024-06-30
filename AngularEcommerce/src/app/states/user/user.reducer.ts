@@ -1,11 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoginResponse } from "../../components/types/login";
 import { addLoginInfo, removeLoginInfo } from "./user.action";
+import { emptyCart } from "../cart/cart/cart.action";
 
 export interface ILoginState {
   user: LoginResponse;
 }
-
 export const initialLoginState: ILoginState = {
   user: {
     id: 0,
@@ -20,7 +20,7 @@ export const initialLoginState: ILoginState = {
     claims: [],
   }
 };
-
+ 
 export const loginReducer = createReducer(
   initialLoginState,
   on(addLoginInfo, (state, { user }) => {

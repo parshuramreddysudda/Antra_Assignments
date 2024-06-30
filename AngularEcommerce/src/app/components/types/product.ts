@@ -6,11 +6,14 @@ export type Product ={
   category: ProductCategory;
   price: number;
   qty: number;
+  quantity:number;
   product_image: string;
   sku: string;
  [key: string]: any;
 }
-
+export interface CartProduct extends Product {
+  userQuantity: number; // Quantity user wants to add to cart
+}
 export type ProductCategory= {
   id: number;
   name: string;
