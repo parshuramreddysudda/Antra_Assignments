@@ -4,21 +4,10 @@ import { addLoginInfo, removeLoginInfo } from "./user.action";
 import { emptyCart } from "../cart/cart/cart.action";
 
 export interface ILoginState {
-  user: LoginResponse;
+  user: LoginResponse | null;
 }
 export const initialLoginState: ILoginState = {
-  user: {
-    id: 0,
-    fullName: "",
-    email: "",
-    gender: "",
-    phone: "",
-    profilePic: "",
-    role: "",
-    userId: "",
-    token: "",
-    claims: [],
-  }
+  user: null
 };
  
 export const loginReducer = createReducer(

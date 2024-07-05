@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
   ToasterPosition = ToasterPosition;
   userIsLoggedIn: boolean = false;
   isLoginPage:boolean = false;
-  fullName:string|null=null;
+  fullName:string|undefined;
   loginState: Observable<ILoginState>; 
   userImage: string | undefined; 
-  role:string | null=null;
+  role:string | undefined;
   cartItemCount:number=0;
 
   constructor(
@@ -51,9 +51,9 @@ export class AppComponent implements OnInit {
       console.log('User info:', user); // Access user info from the store
     });
     this.loginState.subscribe((data) => {
-      this.fullName=data.user.fullName;
-      this.userImage=data.user.profilePic;
-      this.role = data.user.role;
+      this.fullName=data?.user?.fullName;
+      this.userImage=data?.user?.profilePic;
+      this.role = data?.user?.role;
     });
     console.log("Current role is "+this.role);
   }

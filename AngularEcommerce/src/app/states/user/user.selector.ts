@@ -14,7 +14,7 @@ const selectLoginState = (state: AppState) => {
   
   export const selectFullName = createSelector(
     selectLoginState,
-    (state: ILoginState) => state.user.fullName // Use null coalescing operator to handle potential undefined
+    (state: ILoginState) => state?.user // Use null coalescing operator to handle potential undefined
   );
   
   export const selectUser = createSelector(
