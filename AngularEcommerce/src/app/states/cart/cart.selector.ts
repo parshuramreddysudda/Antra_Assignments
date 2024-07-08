@@ -1,4 +1,5 @@
-import { AppState } from "../../app.state";
+import { AppState } from "../app.state";
+
 
 export const selectorCartState = (state:AppState)=>state.cart;
 // export const selectorCartSize = (state:AppState)=>state.cart;

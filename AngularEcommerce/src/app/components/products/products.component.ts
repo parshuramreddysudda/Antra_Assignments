@@ -7,7 +7,7 @@ import { error } from 'node:console';
 import { LoginService } from '../../services/login/login.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../states/app.state';
-import { addToCart } from '../../states/cart/cart/cart.action';
+import { addToCart } from '../../states/cart/cart.action';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({

@@ -8,9 +8,7 @@ import { routes } from './app.routes';
 import { APIInterceptor } from './Interceptors/API/API.interceptor';
 import { ErrorInterceptor } from './Interceptors/error/error.interceptor';
 import { provideState, provideStore } from '@ngrx/store';
-import { loginReducer } from './states/user/user.reducer';
 import { provideStoreDevtools, StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment.development';
 import { hydrationMetaReducer } from './states/Hydration/hyderation.reducer';
 import { appStoreConfig } from './states/app.state';
 import { EffectsModule, provideEffects } from '@ngrx/effects';
@@ -29,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     },
     provideStore(),
     provideStoreDevtools({
-      maxAge:25,
+      maxAge:2500,
       features:{
         persist:true,
       }

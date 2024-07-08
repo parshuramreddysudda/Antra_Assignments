@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product } from '../../../components/types/product';
+import { Product } from '../../components/types/product';
 import {
   addToCart,
   decrementProduct,

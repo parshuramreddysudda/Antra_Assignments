@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { removeLoginInfo } from '../../states/user/user.action';
-import { emptyCart } from '../../states/cart/cart/cart.action';
+import { emptyCart } from '../../states/cart/cart.action';
 
 @Injectable()
 export class AuthEffects {

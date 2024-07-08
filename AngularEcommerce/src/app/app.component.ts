@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgToastModule, NgToastService, ToasterPosition } from 'ng-angular-popup';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './states/app.state';
 import { selectFullName, selectorLoginState, selectUser } from './states/user/user.selector';
 import { ILoginState } from './states/user/user.reducer';
-import { selectorCartSize, selectorCartState } from './states/cart/cart/cart.selector';
+import { selectorCartSize, selectorCartState } from './states/cart/cart.selector';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   userImage: string | undefined; 
   role:string | undefined;
   cartItemCount:number=0;
+  storeData :any;
 
   constructor(
     private loginService: LoginService,
@@ -35,6 +36,15 @@ export class AppComponent implements OnInit {
     private store:Store<AppState>
   ) {
     this.loginState=this.store.select(selectUser);
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+    beforeunloadHandler(event: Event): void {
+      this.store.subscribe((data)=>{
+        this.storeData=data
+      })
+    console.log("Reload Event Logged", this.storeData);
+    sessionStorage.setItem('applicationState', JSON.stringify(this.storeData));
   }
 
   ngOnInit(): void {
@@ -57,6 +67,7 @@ export class AppComponent implements OnInit {
     });
     console.log("Current role is "+this.role);
   }
+
 
   logout(): void {
     this.loginService.logoutUser();
