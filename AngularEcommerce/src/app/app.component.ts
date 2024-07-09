@@ -32,10 +32,10 @@ export class AppComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private toast: NgToastService,
     private store:Store<AppState>
   ) {
     this.loginState=this.store.select(selectUser);
+
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -43,11 +43,13 @@ export class AppComponent implements OnInit {
       this.store.subscribe((data)=>{
         this.storeData=data
       })
+      debugger;
     console.log("Reload Event Logged", this.storeData);
     sessionStorage.setItem('applicationState', JSON.stringify(this.storeData));
   }
 
   ngOnInit(): void {
+
     // Initially set the userIsLoggedIn based on login status
     this.userIsLoggedIn = this.loginService.userIsLoggedIn();
     this.store.select(selectorCartSize).subscribe((size)=>{

@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { LoginResponse } from "../../components/types/login";
 import { addLoginInfo, removeLoginInfo } from "./user.action";
+import { loadState } from "../store-state/state.action";
 
 export interface ILoginState {
   user: LoginResponse | null;
@@ -25,6 +26,17 @@ export const loginReducer = createReducer(
       ...state,
       user: initialLoginState.user
     };
+  }),
+  on(loadState, (state) => {
+    const savedState = sessionStorage.getItem('applicationState');
+    if (savedState) {
+      const parsedState = JSON.parse(savedState);
+      return {
+        ...state,
+        user: parsedState.user ? { ...parsedState.user.user } : state.user
+      };
+    }
+    return state;
   })
 );
 

@@ -14,7 +14,6 @@ export const appStoreConfig = {
     user: loginReducer,
     // Ensure to add other reducers if needed, like cart
     cart: cartReducer,
-    storeState:storeStateReducer
   },
 //   metaReducers: metaReducers // Ensure this is a flat array
 };

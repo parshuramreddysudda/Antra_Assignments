@@ -8,6 +8,7 @@ import {
   removeFromCart,
   updateProductQuantity,
 } from './cart.action';
+import { loadState } from '../store-state/state.action';
 
 export interface CartState {
   products: Product[];
@@ -97,6 +98,17 @@ export const cartReducer = createReducer(
       ...state,
       products: [],
     };
+  }),
+  on(loadState, (state) => {
+    const savedState = sessionStorage.getItem('applicationState');
+    if (savedState) {
+      const parsedState = JSON.parse(savedState);
+      return {
+        ...state,
+        products: parsedState.cart ? [...parsedState.cart.products] : state.products
+      };
+    }
+    return state;
   })
 
 );
