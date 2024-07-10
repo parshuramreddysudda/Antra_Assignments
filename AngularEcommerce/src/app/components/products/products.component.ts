@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit, Output, output } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
 import { Product } from '../types/product';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { error } from 'node:console';
 import { LoginService } from '../../services/login/login.service';
 import { Store } from '@ngrx/store';
@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
   constructor(private service:ProductService,
     private loginService:LoginService,
     private toast:NgToastService,
+    private router:Router,
     private store:Store<AppState>
   ){
   }
@@ -50,8 +51,12 @@ export class ProductsComponent implements OnInit {
         this.products = data;
       },
       error: (error) => {
+        if (error.status === 401) {
+          // Redirect to the login page or any other page
+          this.router.navigate(['/not-authorized']);
+        }
         this.errorMessage = error.message;
-        console.error("Error While Loading Products", error);
+        console.error("Error While Loading Products", error.s);
       },
       complete: () => {
         // This is optional and can be used if there's something to do after completion

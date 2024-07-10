@@ -29,6 +29,15 @@ export class LoginService {
     private store: Store<AppState>
   ) {
     this.loggedIn.next(this.userIsLoggedIn());
+    window.addEventListener('storage', (event) => {
+      toast.danger("Logged Out")
+      console.log(event);
+      
+      if (event.key === "logoutEvent") {
+        // Token was removed (logout happened), handle logout in this tab
+        this.logoutLocally();
+      }
+    });
   }
 
   login(credentials: any): void {
@@ -96,8 +105,20 @@ export class LoginService {
   logoutUser(): void {
     this.cookieService.delete(environment.Token);
     this.store.dispatch(removeLoginInfo());
-    this.loggedIn.next(false);
-    this.router.navigate(['login']);
+    localStorage.setItem('logoutEvent', Date.now().toString());
     this.toast.warning('User Logged Out Successfully');
+    // Perform local logout actions (e.g., clear local session)
+    this.router.navigate(['/login']);
+    // Optional: you can emit an event or perform other cleanup tasks
+    this.loggedIn.next(false);
+  }
+
+  private logoutLocally() {
+    this.store.dispatch(removeLoginInfo());
+    this.toast.warning('User Logged Out Successfully');
+    // Perform local logout actions (e.g., clear local session)
+    this.router.navigate(['/login']);
+    // Optional: you can emit an event or perform other cleanup tasks
+    this.loggedIn.next(false);
   }
 }

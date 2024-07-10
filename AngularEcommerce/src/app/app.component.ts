@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
     private store:Store<AppState>
   ) {
     this.loginState=this.store.select(selectUser);
-
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -43,9 +42,8 @@ export class AppComponent implements OnInit {
       this.store.subscribe((data)=>{
         this.storeData=data
       })
-      debugger;
     console.log("Reload Event Logged", this.storeData);
-    sessionStorage.setItem('applicationState', JSON.stringify(this.storeData));
+    localStorage.setItem('applicationState', JSON.stringify(this.storeData));
   }
 
   ngOnInit(): void {

@@ -100,7 +100,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(loadState, (state) => {
-    const savedState = sessionStorage.getItem('applicationState');
+    const savedState = localStorage.getItem('applicationState');
     if (savedState) {
       const parsedState = JSON.parse(savedState);
       return {

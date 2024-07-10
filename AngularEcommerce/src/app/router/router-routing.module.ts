@@ -8,25 +8,47 @@ import { NotfoundComponent } from '../components/notfound/notfound.component';
 import { LoginComponent } from '../components/login/login.component';
 import { CreateProductComponent } from '../components/products/create-product/create-product.component';
 import { DeleteProductComponent } from '../components/products/delete-product/delete-product.component';
-import { authGuardGuard } from '../guards/auth-guard.guard';
+import { isAuthenticGuard } from '../guards/auth-guard.guard';
 import { CartComponent } from '../components/cart/cart.component';
+import { RouteGuard } from '../guards/rbac-auth/admin-auth.guard';
+import { Roles } from '../components/types/Roles';
+import { NotAuthorizedComponent } from '../components/not-authorized/not-authorized.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'products',
-    title:"Products",
+    title: 'Products',
     children: [
-      {path:'',component:ProductsComponent,pathMatch:"full",canActivate:[authGuardGuard]},
-      {path:'create',component:CreateProductComponent,pathMatch:"full"},
-      {path:'delete',component:DeleteProductComponent,pathMatch:"full"},
-      { path: ':id', component: ProductComponent,pathMatch:"full"},
+      { path: '', component: ProductsComponent, pathMatch: 'full' },
+      {
+        path: 'create',
+        component: CreateProductComponent,
+        pathMatch: 'full',
+        canActivate: [isAuthenticGuard, RouteGuard],
+        data: { roles: [Roles.Admin,Roles.Manager] },
+      },
+      {
+        path: 'delete',
+        component: DeleteProductComponent,
+        pathMatch: 'full',
+        canActivate: [isAuthenticGuard, RouteGuard],
+        data: { roles: [Roles.Admin] },
+      },
+      {
+        path: ':id',
+        component: ProductComponent,
+        pathMatch: 'full',
+        canActivate: [isAuthenticGuard, RouteGuard],
+        data: { roles: [Roles.Admin,Roles.Manager] },
+      },
     ],
   },
-  { path: 'cart', component: CartComponent,title:"Cart" }, 
-  { path: 'customers', component: CustomersComponent,title:"Customers" }, // not lazy loading
-  { path: 'home', component: HomeComponent ,title:"Home"},
-  { path: '**', component: NotfoundComponent,title:"404 - Not Found " },
+  { path: 'cart', component: CartComponent, title: 'Cart' },
+  { path: 'customers', component: CustomersComponent, title: 'Customers' }, // not lazy loading
+  { path: 'home', component: HomeComponent, title: 'Home' },
+  {path:"not-authorized",component:NotAuthorizedComponent,title:"403 Forbidden"},
+  { path: '**', component: NotfoundComponent, title: '404 - Not Found ' },
 ];
 
 @NgModule({

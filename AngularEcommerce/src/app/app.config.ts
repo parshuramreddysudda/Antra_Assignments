@@ -33,6 +33,11 @@ export const appConfig: ApplicationConfig = {
       useClass: APIInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
     provideStore(),
     provideStoreDevtools({
       maxAge:2500,

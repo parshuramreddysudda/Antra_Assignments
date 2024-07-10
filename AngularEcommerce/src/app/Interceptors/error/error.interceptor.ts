@@ -3,27 +3,26 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
-export const ErrorInterceptor: HttpInterceptor = {
-    
+
+@Injectable()
+export class ErrorInterceptor implements HttpInterceptor {
+  constructor(private router: Router) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const toast = Inject(NgToastService)
-
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        let errorMessage = 'An unknown error occurred!';
-        if (error.error instanceof ErrorEvent) {
-          // A client-side or network error occurred
-          errorMessage = `An error occurred: ${error.error.message}`;
-          toast.error(errorMessage);
-        } else {
-          // The backend returned an unsuccessful response code
-          errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
-          toast.error(errorMessage);
+        if (error.status === 401) {
+          // Redirect to login or any other page
+          this.router.navigate(['/login']);
         }
-        console.error(errorMessage);
-        return throwError(() => new Error(errorMessage));
+        else if (error.status === 403) {
+          // Redirect to login or any other page
+          this.router.navigate(['/not-authorized']);
+        }
+        return throwError((error));
       })
     );
   }
-};
+}

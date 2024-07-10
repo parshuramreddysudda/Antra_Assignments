@@ -1,7 +1,7 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { authGuardGuard } from './guards/auth-guard.guard';
 import { loginGuardGuard } from './guards/login-guard/login-guard.guard';
+import { NgModule } from '@angular/core';
 export const routes: Routes = [
 
 {path:'',redirectTo:"login",pathMatch:"full"},
@@ -9,3 +9,9 @@ export const routes: Routes = [
 {path:'',loadChildren:()=>import('./router/router.module').then(m=>m.RouterModule)},
 ];
 
+@NgModule({
+    imports: [RouterModule.forRoot(routes)], // Root level
+    exports: [RouterModule],
+  })
+
+  export class AppRoutingModule{}
