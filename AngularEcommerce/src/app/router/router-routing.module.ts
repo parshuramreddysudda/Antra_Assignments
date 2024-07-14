@@ -13,6 +13,8 @@ import { CartComponent } from '../components/cart/cart.component';
 import { RouteGuard } from '../guards/rbac-auth/admin-auth.guard';
 import { Roles } from '../components/types/Roles';
 import { NotAuthorizedComponent } from '../components/not-authorized/not-authorized.component';
+import { RoutesEnums } from '../components/types/Enums';
+import { ServiceUnavailableComponent } from '../components/service-unavailable/service-unavailable.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -47,7 +49,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent, title: 'Cart' },
   { path: 'customers', component: CustomersComponent, title: 'Customers' }, // not lazy loading
   { path: 'home', component: HomeComponent, title: 'Home' },
-  {path:"not-authorized",component:NotAuthorizedComponent,title:"403 Forbidden"},
+  { path:RoutesEnums.notAuthorized,component:NotAuthorizedComponent,title:"403 Forbidden"},
+  { path:RoutesEnums.serviceUnavailable,component:ServiceUnavailableComponent,title:"403 Forbidden"},
   { path: '**', component: NotfoundComponent, title: '404 - Not Found ' },
 ];
 

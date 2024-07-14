@@ -11,7 +11,7 @@ export const isAuthenticGuard: CanActivateChildFn = (childRoute, state) => {
     return true
   }else{
     toast.danger("Unauthorized, Please Login in back");
-    router.navigate(['/not-authorized']);
+    router.navigate(['/login']);
     return false;
   }
 };

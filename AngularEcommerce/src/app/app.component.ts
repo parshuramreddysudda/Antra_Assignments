@@ -1,22 +1,25 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgToastModule, NgToastService, ToasterPosition } from 'ng-angular-popup';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
+import {  Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NgToastModule, ToasterPosition } from 'ng-angular-popup';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { filter, Observable } from 'rxjs';
+import {  map, Observable, of } from 'rxjs';
 import { LoginService } from './services/login/login.service';
 import { Store } from '@ngrx/store';
 import { AppState } from './states/app.state';
-import { selectFullName, selectorLoginState, selectUser } from './states/user/user.selector';
+import { selectUser } from './states/user/user.selector';
 import { ILoginState } from './states/user/user.reducer';
-import { selectorCartSize, selectorCartState } from './states/cart/cart.selector';
+import { selectorCartSize } from './states/cart/cart.selector';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,RouterLinkActive,RouterLink,NgToastModule,CommonModule,AsyncPipe],
-templateUrl: './app.component.html',
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+  
 export class AppComponent implements OnInit {
 
   ToasterPosition = ToasterPosition;
@@ -28,6 +31,7 @@ export class AppComponent implements OnInit {
   role:string | undefined;
   cartItemCount:number=0;
   storeData :any;
+  loggedUser:any;
 
   constructor(
     private loginService: LoginService,
@@ -47,6 +51,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loggedUser= signal("Not Logged In ");
 
     // Initially set the userIsLoggedIn based on login status
     this.userIsLoggedIn = this.loginService.userIsLoggedIn();
