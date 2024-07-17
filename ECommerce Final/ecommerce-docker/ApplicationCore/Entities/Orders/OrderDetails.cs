@@ -12,6 +12,7 @@ public class OrderDetails
     public Order Order { get; set; }
     [Required]
     public int ProductId { get; set; }
+    public Product.Product Product { get; set; }
     [Required]
     public int ProductPrice { get; set; }
     public int Quantity { get; set; }

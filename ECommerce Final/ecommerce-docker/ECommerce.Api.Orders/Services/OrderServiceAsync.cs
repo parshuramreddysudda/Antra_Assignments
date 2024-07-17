@@ -4,16 +4,18 @@ using ApplicationCore.ServiceContracts;
 
 namespace ECommerce.Api.Orders.Services;
 
-public class OrderServiceAsync:IOrderServiceAsync
+public class OrderServiceAsync : IOrderServiceAsync
 {
-    public OrderServiceAsync()
+    private readonly IOrderServiceAsync _orderServiceAsync;
+
+    public OrderServiceAsync(IOrderServiceAsync orderServiceAsync)
     {
-        
+        _orderServiceAsync = orderServiceAsync;
     }
 
     public async Task<(bool IsSuccess, IEnumerable<Order> orders, string ErrorMessage)> GetOrdersAsync()
     {
-        throw new NotImplementedException();
+        var result = _orderServiceAsync.GetOrderAsync()
     }
 
     public async Task<(bool IsSuccess, Order order, string ErrorMessage)> GetOrderAsync(int id)
