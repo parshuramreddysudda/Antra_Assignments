@@ -1,0 +1,61 @@
+﻿version: '3.7'
+
+services:
+  ecommerce.api.search:
+    image: ${DOCKER_REGISTRY-}ecommerce.api.search
+    build:
+      context: .
+      dockerfile: ECommerce.Api.Search/Dockerfile
+    environment:
+      - Services__Products=http://ecommerce.api.products:8080
+      - Services__Orders=http://ecommerce.api.orders:8080
+      - Services__Customers=http://ecommerce.api.customers:8080
+    ports:
+      - "46001:8080"
+
+  ecommerce.api.products:
+    image: ${DOCKER_REGISTRY-}ecommerce.api.products
+    build:
+      context: .
+      dockerfile: ECommerce.Api.Products/Dockerfile
+    ports:
+      - "46002:8080"
+
+  ecommerce.api.orders:
+    image: ${DOCKER_REGISTRY-}ecommerce.api.orders
+    build:
+      context: .
+      dockerfile: ECommerce.Api.Orders/Dockerfile
+    ports:
+      - "46003:8080"
+
+  ecommerce.api.customers:
+    image: ${DOCKER_REGISTRY-}ecommerce.api.customers
+    build:
+      context: .
+      dockerfile: ECommerce.Api.Customers/Dockerfile
+    ports:
+      - "46004:8080"
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+  mysql-exporter:
+    image: prom/mysqld-exporter
+    environment:
+      - DATA_SOURCE_NAME=sa:H4ck5H4ck5@tcp(172.17.0.2:1433)
+    ports:
+      - "9104:9104"
+
+volumes:
+  grafana-storage:
