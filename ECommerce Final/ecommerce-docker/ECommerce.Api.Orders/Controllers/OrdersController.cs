@@ -1,5 +1,6 @@
 using ApplicationCore.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Api.Orders.Controllers
 {
@@ -11,10 +12,10 @@ namespace ECommerce.Api.Orders.Controllers
 
         public OrdersController(IOrderServiceAsync orderServiceAsync)
         {
-            orderServiceAsync = _orderService;
+            _orderService = orderServiceAsync;
         }
          [HttpGet]
-         public async Task<IActionResult> GetOrdersAsync(int id)
+         public async Task<IActionResult> GetOrdersAsync()
          {
              var result = await _orderService.GetOrdersAsync();
         

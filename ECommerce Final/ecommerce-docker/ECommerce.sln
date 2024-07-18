@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Customers", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Products", "ECommerce.Api.Products\ECommerce.Api.Products.csproj", "{7E981D12-DDC5-4528-A64F-D4D21039FBD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Orders", "ECommerce.Api.Orders\ECommerce.Api.Orders.csproj", "{4290758E-1ABC-4110-AD12-5B3641CBD23E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Products.Tests", "ECommerce.Api.Products.Tests\ECommerce.Api.Products.Tests.csproj", "{4554742B-8A3B-4291-B0F8-C5B27CB3BB18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA47C0B5-90EA-4012-83FB-3C9903077027}"
@@ -17,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{638D4A46-A82C-477C-9770-EB9D3DC65AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Orders", "ECommerce.Api.Orders\ECommerce.Api.Orders.csproj", "{EA4E120D-1281-47FE-AE52-932111939AC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +36,6 @@ Global
 		{7E981D12-DDC5-4528-A64F-D4D21039FBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E981D12-DDC5-4528-A64F-D4D21039FBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E981D12-DDC5-4528-A64F-D4D21039FBD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4290758E-1ABC-4110-AD12-5B3641CBD23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4290758E-1ABC-4110-AD12-5B3641CBD23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4290758E-1ABC-4110-AD12-5B3641CBD23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4290758E-1ABC-4110-AD12-5B3641CBD23E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4554742B-8A3B-4291-B0F8-C5B27CB3BB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4554742B-8A3B-4291-B0F8-C5B27CB3BB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4554742B-8A3B-4291-B0F8-C5B27CB3BB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,5 +44,9 @@ Global
 		{638D4A46-A82C-477C-9770-EB9D3DC65AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{638D4A46-A82C-477C-9770-EB9D3DC65AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{638D4A46-A82C-477C-9770-EB9D3DC65AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4E120D-1281-47FE-AE52-932111939AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4E120D-1281-47FE-AE52-932111939AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4E120D-1281-47FE-AE52-932111939AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4E120D-1281-47FE-AE52-932111939AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

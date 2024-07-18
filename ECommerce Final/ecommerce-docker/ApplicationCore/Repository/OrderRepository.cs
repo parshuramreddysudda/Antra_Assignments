@@ -1,10 +1,14 @@
 using ApplicationCore.Entities.Orders;
 using ApplicationCore.RepositoryContracts;
-using Infrastructure.Data;
+ 
 
 namespace ApplicationCore.Repository;
 
-public class OrderRepository(ECommerenceDbContext _context) :BaseRepositoryAsync<Order>(_context),IOrderRepositoryAsync
+public class OrderRepository:BaseRepositoryAsync<Order>,IOrderRepositoryAsync
 {
+    public OrderRepository(ECommerenceDbContext _context):base(_context)
+    {
+        
+    }
     
 }

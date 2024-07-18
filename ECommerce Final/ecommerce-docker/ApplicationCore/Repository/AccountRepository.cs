@@ -1,11 +1,9 @@
 using ApplicationCore.Entities.ApplicationUser;
 using ApplicationCore.Model.Request;
 using ApplicationCore.RepositoryContracts;
-using Azure.Identity;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infrastructure.Repository;
+namespace ApplicationCore.Repository;
 
 public class AccountRepository:IAccountRepository
 {

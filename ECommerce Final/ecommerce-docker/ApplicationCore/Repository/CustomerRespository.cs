@@ -1,9 +1,7 @@
 using ApplicationCore.Entities.Customer;
-using ApplicationCore.Repository;
 using ApplicationCore.RepositoryContracts;
-using Infrastructure.Data;
 
-namespace Infrastructure.Repository;
+namespace ApplicationCore.Repository;
 
 public class CustomerRespositoryAsync:BaseRepositoryAsync<Customer>,ICustomerRepositoryAsync
 {

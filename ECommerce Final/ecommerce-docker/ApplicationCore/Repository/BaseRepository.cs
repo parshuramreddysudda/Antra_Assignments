@@ -1,5 +1,4 @@
 using ApplicationCore.RepositoryContracts;
-using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationCore.Repository;

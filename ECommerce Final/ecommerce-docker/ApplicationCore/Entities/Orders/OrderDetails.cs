@@ -8,7 +8,6 @@ public class OrderDetails
     [Key]
     public int Id { get; set; }
     [Required]
-    public int? Order_Id { get; set; }
     public Order Order { get; set; }
     [Required]
     public int ProductId { get; set; }
