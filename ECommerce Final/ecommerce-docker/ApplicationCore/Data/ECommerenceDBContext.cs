@@ -18,5 +18,11 @@ public class ECommerenceDbContext:IdentityDbContext<ApplicationUser>
     public DbSet<Customer> Customers { get; set; }
     public DbSet<CustomerEntities.UserAddress> UserAddresses { get; set; }
     public DbSet<CustomerEntities.Address> Addresses { get; set; }
+
+    // protected override void OnModelCreating(ModelBuilder modelBuilder)
+    // {
+    //     modelBuilder.Entity<OrderDetails>()
+    //         .HasKey(od => new { od.Id, od.ProductId });
+    // }
     
 }

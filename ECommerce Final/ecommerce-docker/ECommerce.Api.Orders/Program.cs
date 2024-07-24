@@ -1,4 +1,5 @@
 using ApplicationCore.Entities.ApplicationUser;
+using ApplicationCore.Helpers;
 using ApplicationCore.Repository;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
@@ -18,6 +19,11 @@ builder.Services.AddControllers().AddNewtonsoftJson((options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
 }));
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+    });
 builder.Services.AddDbContext<ECommerenceDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDB"));
@@ -26,7 +32,9 @@ builder.Services.AddScoped<IOrderRepositoryAsync,OrderRepository >();
 builder.Services.AddScoped<IOrderServiceAsync,OrderServiceAsync>();
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
+builder.Services.AddHealthChecks();
 builder.Services.AddMvc();
+builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 
@@ -44,5 +52,6 @@ app.UseCors();
 app.UseEndpoints(options =>
 {
     options.MapControllers();
+    options.MapHealthChecks("/health");
 });
 app.Run();;

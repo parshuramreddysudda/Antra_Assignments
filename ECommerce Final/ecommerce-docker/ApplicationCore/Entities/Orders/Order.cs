@@ -17,5 +17,5 @@ public class Order
     public string ShippingAddress { get; set; }
     public decimal BillAmount { get; set; }
     public string OrderStatus { get; set; }
-    public ICollection<OrderDetails> OrderDetails { get; set; }
+    public List<OrderDetails> OrderDetails { get; set; }
 }
