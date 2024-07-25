@@ -6,7 +6,7 @@ public class Order
 {
     [Key]
     public int Id { get; set; }
-    public DateOnly OrderDate { get; set; }
+    public DateTime OrderDate { get; set; }
     [Required]
     public int CustomerId { get; set; }
     public Customer.Customer Customer { get; set; }

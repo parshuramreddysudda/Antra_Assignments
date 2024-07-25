@@ -25,7 +25,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.router.navigate([RoutesEnums.notAuthorized]);
         }
         else{
-          this.router.navigate([RoutesEnums.serviceUnavailable])
+          // this.router.navigate([RoutesEnums.serviceUnavailable])
         }
         return throwError((error));
       })

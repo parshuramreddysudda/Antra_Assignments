@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 import { Roles } from '../../components/types/Roles';
 import { NgToastService } from 'ng-angular-popup';
 
-export const RouteGuard: CanActivateFn = (route, state) => {
+export const RoleGuard: CanActivateFn = (route, state) => {
   const store = inject(Store<ILoginState>);
   const toast = inject(NgToastService);
   const router = inject(Router)

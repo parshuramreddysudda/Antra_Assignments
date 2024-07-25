@@ -115,6 +115,7 @@ export class LoginService {
 
   private logoutLocally() {
     this.store.dispatch(removeLoginInfo());
+
     this.toast.warning('User Logged Out Successfully');
     // Perform local logout actions (e.g., clear local session)
     this.router.navigate(['/login']);

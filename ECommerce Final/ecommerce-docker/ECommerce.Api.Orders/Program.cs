@@ -34,6 +34,15 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
 builder.Services.AddHealthChecks();
 builder.Services.AddMvc();
+builder.Services.AddCors((options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+        policy.AllowAnyOrigin();
+    });
+}));
 builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 

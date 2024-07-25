@@ -46,9 +46,11 @@
           <span>Total</span>
           <span>{{ cartTotal | currency }}</span>
         </div>
-        <button class="w-full py-3 text-xl text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none" (click)="checkout()">
-          Proceed to Checkout
-        </button>
+        <a href="/orders-create">
+          <button class="w-full py-3 text-xl text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none">
+              Proceed to Checkout
+          </button>
+        </a>
       </div>
     </div>
   </div>

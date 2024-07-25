@@ -11,21 +11,15 @@ export const initialState: IAppState = {
 export const storeStateReducer = createReducer(
   initialState,
   on(updateState, (state) => {
-    
-
     console.log("StoreState REducer Data is ",state);
-    
     return {
         ...state
     }
 
-
-
   }),
   on(loadState, (state => {
     console.log("Called Load State");
-    
-    var savedState = sessionStorage.getItem('applicationState');
+    var savedState = localStorage.getItem('applicationState');
     if(savedState!=null)
         return {
             ...state,

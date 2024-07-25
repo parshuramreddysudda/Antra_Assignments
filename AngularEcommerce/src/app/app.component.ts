@@ -51,8 +51,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedUser= signal("Not Logged In ");
-
     // Initially set the userIsLoggedIn based on login status
     this.userIsLoggedIn = this.loginService.userIsLoggedIn();
     this.store.select(selectorCartSize).subscribe((size)=>{

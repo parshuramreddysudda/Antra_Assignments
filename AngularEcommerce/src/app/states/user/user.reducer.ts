@@ -2,6 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { LoginResponse } from "../../components/types/login";
 import { addLoginInfo, removeLoginInfo } from "./user.action";
 import { loadState } from "../store-state/state.action";
+import { environment } from "../../../environments/environment.development";
 
 export interface ILoginState {
   user: LoginResponse | null;
@@ -13,7 +14,8 @@ export const initialLoginState: ILoginState = {
 export const loginReducer = createReducer(
   initialLoginState,
   on(addLoginInfo, (state, { user }) => {
-    console.log('Adding login info:', user); // Log the user object being added
+    // console.log('Adding login info:', user); // Log the user object being added
+    localStorage.setItem(environment.AppState, JSON.stringify({...state,user:{user:{...user}}}));
     return {
       ...state,
       user: { ...user }
@@ -21,7 +23,8 @@ export const loginReducer = createReducer(
   }),
 
   on(removeLoginInfo, (state) => {
-    console.log('Removing login info'); // Log the removal of login info
+    localStorage.removeItem('applicationState')
+    // console.log('Removing login info'); // Log the removal of login info
     return {
       ...state,
       user: initialLoginState.user
@@ -29,6 +32,8 @@ export const loginReducer = createReducer(
   }),
   on(loadState, (state) => {
     const savedState = localStorage.getItem('applicationState');
+    // console.log("Saved State is "+savedState);
+    
     if (savedState) {
       const parsedState = JSON.parse(savedState);
       return {

@@ -1,0 +1,22 @@
+/* checkout.component.css */
+@media (max-width: 640px) {
+    .flex-1 {
+      width: 100%;
+    }
+    .w-full {
+      width: 100%;
+    }
+  }
+  
+  .header {
+    @apply bg-white shadow-md;
+  }
+  
+  .product-card {
+    @apply transition-transform transform hover:scale-105;
+  }
+  
+  .submit-button {
+    @apply transition-transform transform hover:scale-105;
+  }
+  

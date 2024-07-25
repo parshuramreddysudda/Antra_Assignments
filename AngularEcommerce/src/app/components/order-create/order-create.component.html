@@ -1,0 +1,55 @@
+<!-- checkout.component.html -->
+<div class="max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-md">
+  <h2 class="mb-4 text-2xl font-bold">Checkout</h2>
+  
+  <div class="flex gap-6">
+    <!-- Products Details -->
+    <div class="flex-1">
+      <h3 class="mb-4 text-xl font-semibold">Cart Details</h3>
+      <div *ngFor="let product of cart.products" class="flex items-center p-4 mb-4 bg-gray-100 rounded-lg product-card ">
+        <img class="object-cover w-24 h-24 mr-4 rounded" [src]="product.product_image.includes('http') ? product.product_image : 'https://previews.123rf.com/images/antonshaparenko/antonshaparenko1906/antonshaparenko190600349/125186506-product-vector-icon-illustration-creative-sign-from-quality-control-icons-collection-filled-flat.jpg'" alt="Product" />
+  
+        <div>
+          <p><strong>Name:</strong> {{ product.name }}</p>
+          <p><strong>Description:</strong> {{ product.description }}</p>
+          <p><strong>Price:</strong> {{ product.price | currency }}</p>
+          <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+          <p><strong>Total:</strong> {{ product.price * product.quantity | currency }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Calculation Details -->
+    <div class="p-6 rounded-lg shadow-md w-80 bg-gray-50">
+      <h3 class="mb-4 text-xl font-semibold">Order Summary</h3>
+      <p class="mb-2"><strong>Total Items:</strong> {{totalItems}}</p>
+      <p class="mb-4"><strong>Total Amount:</strong> {{ totalAmount | currency }}</p>
+
+      <div class="mb-4">
+        <h4 class="text-lg font-semibold">Payment Method</h4>
+        <select [(ngModel)]="selectedPaymentMethod" class="w-full p-2 mt-2 border rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <h4 class="text-lg font-semibold">Shipping Method</h4>
+        <select [(ngModel)]="selectedShippingMethod" class="w-full p-2 mt-2 border rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <option *ngFor="let method of shippingMethods" [value]="method">{{ method }}</option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <h4 class="text-lg font-semibold">Order Status</h4>
+        <select [(ngModel)]="selectedOrderStatus" class="w-full p-2 mt-2 border rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <option *ngFor="let status of orderStatuses" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button (click)="submitOrder()" class="w-full px-4 py-2 text-white bg-green-500 rounded-md">
+        Place Order
+      </button>
+    </div>
+  </div>
+</div>

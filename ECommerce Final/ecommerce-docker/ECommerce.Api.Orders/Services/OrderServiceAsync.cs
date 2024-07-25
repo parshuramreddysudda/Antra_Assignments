@@ -81,7 +81,7 @@ public class OrderServiceAsync : IOrderServiceAsync
             else
             {
                 // Console.WriteLine("No orders found for customer ID: " + id);
-                return (false, null, "No orders found for the given customer ID.");
+                return (true, [], "No orders found for the given customer ID.");
             }
         }
         catch (Exception ex)
@@ -95,9 +95,9 @@ public class OrderServiceAsync : IOrderServiceAsync
     {
         try
         {
-            //order.OrderDate = new DateOnly("2024-07-17");
+            order.OrderDate = DateTime.Now;
+            Console.WriteLine("Order is",order);
             var newOrder = _mapper.Map<Order>(order);
-
             var orders = await _orderRepository.InsertAsync(newOrder);
             // Console.WriteLine(ordersResponse);
             

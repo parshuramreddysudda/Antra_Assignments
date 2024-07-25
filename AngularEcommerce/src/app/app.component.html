@@ -8,7 +8,6 @@
           <div *ngIf="!userIsLoggedIn && !isLoginPage">
             <button class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" (click)="login()">Log in</button>
           </div>
-          <span>{{loggedUser()}}</span>
           <div *ngIf="userIsLoggedIn" class="flex items-center">
             <img src="{{userImage}}" alt="{{fullName}}" class="w-8 h-8 mr-2 rounded-full">
             <span class="mr-4 white-text">{{fullName}} </span>
@@ -43,6 +42,9 @@
             </li>
             <li>
               <a routerLink="/products" class="block py-2 pl-3 pr-4 border-gray-100 hover:text-blue-600 dark:hover:text-white lg:p-0" routerLinkActive="activeNav">Products</a>
+            </li>
+            <li>
+              <a routerLink="/orders" class="block py-2 pl-3 pr-4 border-gray-100 hover:text-blue-600 dark:hover:text-white lg:p-0" routerLinkActive="activeNav">Orders</a>
             </li>
           </ul>
         </div>
