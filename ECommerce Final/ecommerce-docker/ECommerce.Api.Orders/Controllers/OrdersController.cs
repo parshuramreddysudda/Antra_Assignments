@@ -53,5 +53,18 @@ namespace ECommerce.Api.Orders.Controllers
 
             return NotFound(result.ErrorMessage);
         }
+        
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrderAsync(int orderID)
+        {
+            var result = await _orderService.DeleteOrderAsync(orderID);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.id);
+            }
+
+            return NotFound(result.ErrorMessage);
+        }
     }
 }

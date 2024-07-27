@@ -3,6 +3,7 @@ using ApplicationCore.Model.Request;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
 using AutoMapper;
+using ECommerce.Api.Orders.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Api.Orders.Services;
@@ -12,12 +13,15 @@ public class OrderServiceAsync : IOrderServiceAsync
     private readonly IOrderRepositoryAsync _orderRepository;
     private readonly ECommerenceDbContext _commerenceDbContext;
     private readonly IMapper _mapper;
+    private readonly IRabbitMQProducer _rabbitMqProducer;
 
-    public OrderServiceAsync(IOrderRepositoryAsync orderRepository, ECommerenceDbContext commerenceDbContext,IMapper mapper)
+    public OrderServiceAsync(IOrderRepositoryAsync orderRepository, ECommerenceDbContext commerenceDbContext,IMapper mapper,IRabbitMQProducer rabbitMqProducer)
     {
+        _rabbitMqProducer = new RabbitMqProducer("localhost","guest","guest","orderservice");
         _mapper = mapper;
         _orderRepository = orderRepository;
         _commerenceDbContext = commerenceDbContext;
+        
     }
 
     
@@ -33,7 +37,7 @@ public class OrderServiceAsync : IOrderServiceAsync
             
             // Console.WriteLine($"Number of orders retrieved: {orders.Count}");
 
-            if (orders != null && orders.Any())
+            if (orders.Any())
             {
                 orders.ForEach((order) =>
                 {
@@ -96,7 +100,6 @@ public class OrderServiceAsync : IOrderServiceAsync
         try
         {
             order.OrderDate = DateTime.Now;
-            Console.WriteLine("Order is",order);
             var newOrder = _mapper.Map<Order>(order);
             var orders = await _orderRepository.InsertAsync(newOrder);
             // Console.WriteLine(ordersResponse);
@@ -127,6 +130,27 @@ public class OrderServiceAsync : IOrderServiceAsync
 
     public async Task<(bool IsSuccess, int id, string ErrorMessage)> DeleteOrderAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var order = await _commerenceDbContext.Orders
+                .Include(o => o.OrderDetails)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order != null)
+            {
+                _commerenceDbContext.Orders.Remove(order);
+                await _commerenceDbContext.SaveChangesAsync();
+                return (true, id, null);
+            }
+            else
+            {
+                return (false, 0, "Order not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            return (false, 0, $"Error: {ex.Message}");
+        }
     }
+
 }

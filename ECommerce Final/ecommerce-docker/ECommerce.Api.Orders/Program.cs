@@ -3,6 +3,7 @@ using ApplicationCore.Helpers;
 using ApplicationCore.Repository;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using ECommerce.Api.Orders.Interfaces;
 using ECommerce.Api.Orders.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ builder.Services.AddDbContext<ECommerenceDbContext>(options =>
 });
 builder.Services.AddScoped<IOrderRepositoryAsync,OrderRepository >();
 builder.Services.AddScoped<IOrderServiceAsync,OrderServiceAsync>();
+builder.Services.AddScoped<IRabbitMQProducer>(_=>new RabbitMqProducer( "localhost","guest","guest","orderservice"));
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
 builder.Services.AddHealthChecks();
