@@ -42,6 +42,19 @@ namespace ECommerce.Api.Orders.Controllers
             return NotFound(result.ErrorMessage);
         }
         
+        [HttpGet("order/{orderId}")]
+        public async Task<IActionResult> GetOrderByOrderIdAsync(int orderId)
+        {
+            var result = await _orderService.GetOrdersByOrderIdAsync(orderId);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.order);
+            }
+
+            return NotFound(result.ErrorMessage);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> InsertOrderAsync(OrderRequestModel orderRequestModel)
         {

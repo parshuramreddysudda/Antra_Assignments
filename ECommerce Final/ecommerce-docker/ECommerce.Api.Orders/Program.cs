@@ -7,6 +7,7 @@ using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
 using ECommerce.Api.Orders.Interfaces;
 using ECommerce.Api.Orders.Services;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ builder.Services.AddDbContext<ECommerenceDbContext>(options =>
 });
 builder.Services.AddScoped<IOrderRepositoryAsync,OrderRepository >();
 builder.Services.AddScoped<IOrderServiceAsync,OrderServiceAsync>();
-builder.Services.AddScoped<IRabbitMQProducer>(_=>new RabbitMqProducer( "localhost","guest","guest","orderservice"));
+builder.Services.AddScoped<IRabbitMQProducer>(_=>new RabbitMqProducer( Constants.ORDER_QUEUE_HOST_NAME,Constants.ORDER_QUEUE_USER_NAME,Constants.ORDER_QUEUE_PASSWORD,Constants.ORDER_QUEUE_NAME));
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
 builder.Services.AddHealthChecks();
@@ -51,6 +52,11 @@ builder.Services.AddCors((options =>
 }));
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddHangfire((configuration =>
+{
+    configuration.UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireDB"));
+}));
+
 var key = Encoding.ASCII.GetBytes(Constants.JSON_SECRET_KEY);
 
 builder.Services.AddAuthentication(options =>
@@ -65,8 +71,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = Constants.Issuer,
-        ValidAudience = Constants.Audience,
+        ValidIssuer = Constants.ISSUER,
+        ValidAudience = Constants.AUDIENCE,
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });

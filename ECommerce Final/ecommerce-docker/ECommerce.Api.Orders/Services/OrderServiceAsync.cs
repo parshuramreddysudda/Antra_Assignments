@@ -1,3 +1,4 @@
+using ApplicationCore.Constants;
 using ApplicationCore.Entities.Orders;
 using ApplicationCore.Model.Request;
 using ApplicationCore.RepositoryContracts;
@@ -18,7 +19,7 @@ public class OrderServiceAsync : IOrderServiceAsync
 
     public OrderServiceAsync(IOrderRepositoryAsync orderRepository, ECommerenceDbContext commerenceDbContext,IMapper mapper,IRabbitMQProducer rabbitMqProducer)
     {
-        _rabbitMqProducer = new RabbitMqProducer("localhost","guest","guest","orderservice");
+        _rabbitMqProducer = new RabbitMqProducer( Constants.ORDER_QUEUE_HOST_NAME,Constants.ORDER_QUEUE_USER_NAME,Constants.ORDER_QUEUE_PASSWORD,Constants.ORDER_QUEUE_NAME);
         _mapper = mapper;
         _orderRepository = orderRepository;
         _commerenceDbContext = commerenceDbContext;
@@ -61,8 +62,36 @@ public class OrderServiceAsync : IOrderServiceAsync
             return (false, null, $"Error: {ex.Message}");
         }
     }
-
-    
+    public async Task<(bool IsSuccess, IEnumerable<OrderResponseModel> order, string ErrorMessage)> GetOrdersByOrderIdAsync(int id)
+    {
+        try
+        {
+            var orders = await _commerenceDbContext.Orders
+                .Where(o => o.Id == id)
+                .Include(o => o.OrderDetails)
+                .AsNoTracking()
+                .ToListAsync();
+ 
+            var ordersResponse = _mapper.Map<List<OrderResponseModel>>(orders);
+            Console.WriteLine(ordersResponse); 
+            
+            if (orders.Any())
+            {
+                // Console.WriteLine("Orders found successfully.");
+                return (true, ordersResponse, null);
+            }
+            else
+            {
+                // Console.WriteLine("No orders found for customer ID: " + id);
+                return (true, [], "No orders found for the given Order ID.");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Console.WriteLine($"Error occurred while retrieving orders: {ex.Message}");
+            return (false, null, $"Error: {ex.Message}");
+        }
+    }
 
     public async Task<(bool IsSuccess, List<OrderResponseModel> order, string ErrorMessage)> GetOrderByCustomerIDAsync(int id)
     {
@@ -103,8 +132,9 @@ public class OrderServiceAsync : IOrderServiceAsync
             order.OrderDate = DateTime.Now;
             var newOrder = _mapper.Map<Order>(order);
             var orders = await _orderRepository.InsertAsync(newOrder);
-            var orderMessage = JsonConvert.SerializeObject(order);
-            _rabbitMqProducer.SendMessage(orderMessage);
+            // var orderMessage = JsonConvert.SerializeObject(newOrder);
+            // Hangfire.
+            _rabbitMqProducer.SendMessage(newOrder.Id.ToString());
             // Console.WriteLine(ordersResponse);
             
             if (orders>1)
