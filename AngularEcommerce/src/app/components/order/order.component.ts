@@ -8,6 +8,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgToastService } from 'ng-angular-popup';
+import { error } from 'console';
 
 @Component({
   selector: 'app-order',
@@ -53,5 +54,20 @@ export class OrdersComponent implements OnInit {
     }
     this.toast.danger(errorMessage)
     console.error(error);
+  }
+
+  deleteOrder(orderId:number){
+    this.orderService.deleteOrder(orderId).subscribe(
+      (data)=>{
+      console.log("Delete request Done",data);
+      this.orders=this.orders.filter((order)=>order.id!==orderId)
+      this.toast.success("Order has been Deleted")
+      },
+      (error)=>{
+        console.log("Failed ",error)
+        this.toast.danger("Order Deletion Failed")
+      }
+  
+  );
   }
 }

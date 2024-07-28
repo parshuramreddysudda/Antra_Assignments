@@ -5,6 +5,7 @@ namespace ApplicationCore.Model.Request;
 
 public class OrderRequestModel
 {
+    public int Id { get; set; }
     [Required]
     public int CustomerId { get; set; }
     public DateTime OrderDate { get; set; }

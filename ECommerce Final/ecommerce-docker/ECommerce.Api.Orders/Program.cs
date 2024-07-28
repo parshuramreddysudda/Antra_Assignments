@@ -1,3 +1,5 @@
+using System.Text;
+using ApplicationCore.Constants;
 using ApplicationCore.Entities.ApplicationUser;
 using ApplicationCore.Helpers;
 using ApplicationCore.Repository;
@@ -5,8 +7,10 @@ using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
 using ECommerce.Api.Orders.Interfaces;
 using ECommerce.Api.Orders.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +50,27 @@ builder.Services.AddCors((options =>
     });
 }));
 builder.Services.AddAutoMapper(typeof(Program));
+
+var key = Encoding.ASCII.GetBytes(Constants.JSON_SECRET_KEY);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = Constants.Issuer,
+        ValidAudience = Constants.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
 var app = builder.Build();
 
 

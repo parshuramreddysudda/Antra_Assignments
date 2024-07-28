@@ -5,6 +5,7 @@ using ApplicationCore.ServiceContracts;
 using AutoMapper;
 using ECommerce.Api.Orders.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace ECommerce.Api.Orders.Services;
 
@@ -102,6 +103,8 @@ public class OrderServiceAsync : IOrderServiceAsync
             order.OrderDate = DateTime.Now;
             var newOrder = _mapper.Map<Order>(order);
             var orders = await _orderRepository.InsertAsync(newOrder);
+            var orderMessage = JsonConvert.SerializeObject(order);
+            _rabbitMqProducer.SendMessage(orderMessage);
             // Console.WriteLine(ordersResponse);
             
             if (orders>1)
@@ -125,7 +128,28 @@ public class OrderServiceAsync : IOrderServiceAsync
 
     public async Task<(bool IsSuccess, int id, string ErrorMessage)> UpdateOrderAsync(OrderRequestModel order)
     {
-        throw new NotImplementedException();
+        try
+        {
+            order.OrderDate = DateTime.Now;
+            var newOrder = _mapper.Map<Order>(order);
+            var orders = await _orderRepository.UpdateAsync(newOrder);
+            // Console.WriteLine(ordersResponse);
+            if (orders>=1)
+            {
+                // Console.WriteLine("Orders found successfully.");
+                return (true, 1, null);
+            }
+            else
+            {
+                // Console.WriteLine("No orders found for customer ID: " + id);
+                return (false, 0, orders.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            // Console.WriteLine($"Error occurred while retrieving orders: {ex.Message}");
+            return (false, 0, $"Error: {ex.Message}");
+        }
     }
 
     public async Task<(bool IsSuccess, int id, string ErrorMessage)> DeleteOrderAsync(int id)

@@ -15,6 +15,7 @@ namespace ECommerce.Api.Orders.Controllers
         {
             _orderService = orderServiceAsync;
         }
+        
          [HttpGet]
          public async Task<IActionResult> GetOrdersAsync()
          {
@@ -54,7 +55,21 @@ namespace ECommerce.Api.Orders.Controllers
             return NotFound(result.ErrorMessage);
         }
         
-        [HttpPost]
+           
+        [HttpPut]
+        public async Task<IActionResult> UpdateOrderAsync(OrderRequestModel orderRequestModel)
+        {
+            var result = await _orderService.UpdateOrderAsync(orderRequestModel);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.id);
+            }
+
+            return NotFound(result.ErrorMessage);
+        }
+
+        [HttpDelete]
         public async Task<IActionResult> DeleteOrderAsync(int orderID)
         {
             var result = await _orderService.DeleteOrderAsync(orderID);

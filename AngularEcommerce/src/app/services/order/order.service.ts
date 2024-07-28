@@ -30,6 +30,10 @@ export class OrderService {
   getOrders(customerId:number|undefined): Observable<Order[]> {
     return this.http.get<Order[]>("http://localhost:5130/api/Orders/"+customerId);
   }
+
+  deleteOrder(orderId:number):Observable<Order[]>{
+    return this.http.delete<Order[]>("http://localhost:5130/api/Orders?orderID="+orderId);
+  }
   finalOrders(orders:OrderRequest): Observable<OrderRequest> {
     console.log("Order Information is ",orders);
     
@@ -43,7 +47,5 @@ export class OrderService {
     })
     this.order.customerId=this.storeData.user.user.id;
     this.order.customerName=this.storeData.user.user.fullName;
-    console.log("Store details is ",this.storeData);
-    console.log("Store details is ",this.order);
   }
 }
