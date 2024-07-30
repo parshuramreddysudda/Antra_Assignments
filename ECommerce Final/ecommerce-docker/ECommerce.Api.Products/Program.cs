@@ -56,6 +56,10 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddScoped<IProductServiceAsync,ProductServiceAsync >();
 builder.Services.AddScoped<IProductRepositoryAsync,ProductRepositoryAsync>();
+builder.Services.AddOpenApiDocument((settings =>
+{
+    settings.Title = "Order NSwag APIS";
+}));
 builder.Services.AddAutoMapper(typeof(Program));
 // Inside ConfigureServices method
 var key = Encoding.ASCII.GetBytes(Constants.JSON_SECRET_KEY); // Use the same secret key for signing the token
@@ -93,6 +97,8 @@ app.UseRouting();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseOpenApi();
+app.UseSwaggerUi();
 app.UseEndpoints(options =>
 {
     options.MapControllers();

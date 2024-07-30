@@ -36,6 +36,12 @@ services:
       dockerfile: ECommerce.Api.Customers/Dockerfile
     ports:
       - "46004:8080"
+        
+  ecommerce.orderprocessingservice:
+    image: ecommerce.orderprocessingservice
+    build:
+      context: .
+      dockerfile: ECommerce.OrderProcessingService/Dockerfile
 
   prometheus:
     image: prom/prometheus
@@ -59,3 +65,5 @@ services:
 
 volumes:
   grafana-storage:
+
+

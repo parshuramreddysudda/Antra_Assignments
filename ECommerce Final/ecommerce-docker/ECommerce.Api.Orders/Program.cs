@@ -78,8 +78,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
-
-
+app.UseHangfireServer();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -88,6 +87,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
+app.UseHangfireDashboard("/hangfire");
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors();
@@ -95,5 +95,6 @@ app.UseEndpoints(options =>
 {
     options.MapControllers();
     options.MapHealthChecks("/health");
+    options.MapHangfireDashboard();
 });
 app.Run();;

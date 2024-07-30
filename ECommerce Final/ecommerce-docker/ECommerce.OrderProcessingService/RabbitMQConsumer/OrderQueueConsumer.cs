@@ -21,7 +21,7 @@ public class OrderQueueConsumer
         _username = username;
         _password = password;
         _queueName = queueName;
-        _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5130") }; // Base address for your API
+        _httpClient = new HttpClient { BaseAddress = new Uri("host.docker.internal:46003") }; // Base address for your API
     }
 
     public void Start()

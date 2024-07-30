@@ -5,6 +5,7 @@ using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
 using AutoMapper;
 using ECommerce.Api.Orders.Interfaces;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -132,9 +133,10 @@ public class OrderServiceAsync : IOrderServiceAsync
             order.OrderDate = DateTime.Now;
             var newOrder = _mapper.Map<Order>(order);
             var orders = await _orderRepository.InsertAsync(newOrder);
-            // var orderMessage = JsonConvert.SerializeObject(newOrder);
-            // Hangfire.
-            _rabbitMqProducer.SendMessage(newOrder.Id.ToString());
+            
+            BackgroundJob.Schedule<IRabbitMQProducer>(
+                producer => producer.SendMessage(newOrder.Id.ToString()), 
+                TimeSpan.FromSeconds(15));
             // Console.WriteLine(ordersResponse);
             
             if (orders>1)
