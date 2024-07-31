@@ -39,6 +39,7 @@ builder.Services.AddScoped<IOrderServiceAsync,OrderServiceAsync>();
 builder.Services.AddScoped<IRabbitMQProducer>(_=>new RabbitMqProducer( Constants.ORDER_QUEUE_HOST_NAME,Constants.ORDER_QUEUE_USER_NAME,Constants.ORDER_QUEUE_PASSWORD,Constants.ORDER_QUEUE_NAME));
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
     .AddEntityFrameworkStores<ECommerenceDbContext>().AddDefaultTokenProviders();
+builder.Services.AddSingleton<ServiceBusService>();
 builder.Services.AddHealthChecks();
 builder.Services.AddMvc();
 builder.Services.AddCors((options =>

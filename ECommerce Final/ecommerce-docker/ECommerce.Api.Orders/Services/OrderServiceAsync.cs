@@ -17,9 +17,11 @@ public class OrderServiceAsync : IOrderServiceAsync
     private readonly ECommerenceDbContext _commerenceDbContext;
     private readonly IMapper _mapper;
     private readonly IRabbitMQProducer _rabbitMqProducer;
+    private readonly ServiceBusService _serviceBusService;
 
-    public OrderServiceAsync(IOrderRepositoryAsync orderRepository, ECommerenceDbContext commerenceDbContext,IMapper mapper,IRabbitMQProducer rabbitMqProducer)
+    public OrderServiceAsync(IOrderRepositoryAsync orderRepository, ECommerenceDbContext commerenceDbContext,IMapper mapper,IRabbitMQProducer rabbitMqProducer,ServiceBusService serviceBusService)
     {
+        _serviceBusService = serviceBusService;
         _rabbitMqProducer = new RabbitMqProducer( Constants.ORDER_QUEUE_HOST_NAME,Constants.ORDER_QUEUE_USER_NAME,Constants.ORDER_QUEUE_PASSWORD,Constants.ORDER_QUEUE_NAME);
         _mapper = mapper;
         _orderRepository = orderRepository;
@@ -104,18 +106,17 @@ public class OrderServiceAsync : IOrderServiceAsync
                 .ThenInclude(od=>od.Product)
                 .AsNoTracking()
                 .ToListAsync();
- 
+
+            // await _serviceBusService.ReceiveMessagesAsync();
             var ordersResponse = _mapper.Map<List<OrderResponseModel>>(orders);
             Console.WriteLine(ordersResponse); 
             
             if (orders.Any())
             {
-                // Console.WriteLine("Orders found successfully.");
                 return (true, ordersResponse, null);
             }
             else
             {
-                // Console.WriteLine("No orders found for customer ID: " + id);
                 return (true, [], "No orders found for the given customer ID.");
             }
         }
@@ -133,6 +134,7 @@ public class OrderServiceAsync : IOrderServiceAsync
             order.OrderDate = DateTime.Now;
             var newOrder = _mapper.Map<Order>(order);
             var orders = await _orderRepository.InsertAsync(newOrder);
+            // await _serviceBusService.SendMessageAsync(order);
             
             BackgroundJob.Schedule<IRabbitMQProducer>(
                 producer => producer.SendMessage(newOrder.Id.ToString()), 
