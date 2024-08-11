@@ -57,9 +57,9 @@ namespace ECommerce.Api.Products.Interfaces
             try
             {
                 var result = _productRepository.InsertAsync(_mapper.Map<Product>(entity));
-                if(result!=null)
+                if(result.IsCompletedSuccessfully)
                     return (true, 1, null);
-                return (false, 0, "Product Insertion Failed");
+                return (false, 0, result.Exception.Message);
             }
             catch (Exception ex)
             {
