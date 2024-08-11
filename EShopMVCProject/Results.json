@@ -1,0 +1,122 @@
+[
+  {
+    "ID": 8,
+    "Name": "Iphone13 Pro Max",
+    "Description": "The brand new Iphone for Users",
+    "CategoryId": 16,
+    "Price": 0,
+    "Qty": 100,
+    "Product_image": "",
+    "SKU": ""
+  },
+  {
+    "ID": 10,
+    "Name": "Iphone13 Pro Max",
+    "Description": "The brand new Iphone for Users",
+    "CategoryId": 16,
+    "Price": 1000,
+    "Qty": 100,
+    "Product_image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818",
+    "SKU": ""
+  },
+  {
+    "ID": 1040,
+    "Name": "iPhone 12",
+    "Description": "The iPhone 12 is a powerful smartphone with a sleek design and advanced features.",
+    "CategoryId": 15,
+    "Price": 999,
+    "Qty": 100,
+    "Product_image": "https://placeholder.com/iphone12.jpg",
+    "SKU": "SKU123"
+  },
+  {
+    "ID": 1041,
+    "Name": "Samsung Galaxy S21",
+    "Description": "The Samsung Galaxy S21 is a premium Android smartphone with a stunning display and impressive camera.",
+    "CategoryId": 16,
+    "Price": 899,
+    "Qty": 120,
+    "Product_image": "https://placeholder.com/samsung_s21.jpg",
+    "SKU": "SKU456"
+  },
+  {
+    "ID": 1042,
+    "Name": "HP Pavilion x360",
+    "Description": "The HP Pavilion x360 is a versatile 2-in-1 laptop with a touchscreen display and long battery life.",
+    "CategoryId": 16,
+    "Price": 799,
+    "Qty": 80,
+    "Product_image": "https://placeholder.com/hp_pavilion_x360.jpg",
+    "SKU": "SKU789"
+  },
+  {
+    "ID": 1043,
+    "Name": "Dell Inspiron",
+    "Description": "The Dell Inspiron is a reliable laptop with powerful performance and a comfortable keyboard.",
+    "CategoryId": 16,
+    "Price": 699,
+    "Qty": 90,
+    "Product_image": "https://placeholder.com/dell_inspiron.jpg",
+    "SKU": "SKU321"
+  },
+  {
+    "ID": 1044,
+    "Name": "Nike T-Shirt",
+    "Description": "The Nike T-Shirt is made from soft, breathable fabric and features the iconic Nike logo.",
+    "CategoryId": 18,
+    "Price": 29,
+    "Qty": 200,
+    "Product_image": "https://placeholder.com/nike_tshirt.jpg",
+    "SKU": "SKU654"
+  },
+  {
+    "ID": 1045,
+    "Name": "Adidas Hoodie",
+    "Description": "The Adidas Hoodie is a comfortable and stylish sweatshirt perfect for everyday wear.",
+    "CategoryId": 18,
+    "Price": 49,
+    "Qty": 150,
+    "Product_image": "https://placeholder.com/adidas_hoodie.jpg",
+    "SKU": "SKU987"
+  },
+  {
+    "ID": 1046,
+    "Name": "Harry Potter and the Sorcerer",
+    "Description": "Harry Potter and the Sorcerer's Stone is the first book in the Harry Potter series by J.K. Rowling.",
+    "CategoryId": 22,
+    "Price": 14,
+    "Qty": 300,
+    "Product_image": "https://placeholder.com/harry_potter_book.jpg",
+    "SKU": "SKU654"
+  },
+  {
+    "ID": 1047,
+    "Name": "A Brief History of Humankind",
+    "Description": "Sapiens: A Brief History of Humankind is a thought-provoking exploration of human history by Yuval Noah Harari.",
+    "CategoryId": 23,
+    "Price": 19,
+    "Qty": 250,
+    "Product_image": "https://placeholder.com/sapiens_book.jpg",
+    "SKU": "SKU987"
+  },
+  {
+    "ID": 1048,
+    "Name": "KitchenAid Stand Mixer",
+    "Description": "The KitchenAid Stand Mixer is a versatile kitchen appliance perfect for baking and cooking.",
+    "CategoryId": 25,
+    "Price": 299,
+    "Qty": 50,
+    "Product_image": "https://placeholder.com/kitchenaid_mixer.jpg",
+    "SKU": "SKU321"
+  },
+  {
+    "ID": 1049,
+    "Name": "Decorative Throw Pillow",
+    "Description": "The Decorative Throw Pillow adds a pop of color and style to any living space.",
+    "CategoryId": 26,
+    "Price": 39,
+    "Qty": 100,
+    "Product_image": "https://placeholder.com/throw_pillow.jpg",
+    "SKU": "SKU654"
+  }
+]
