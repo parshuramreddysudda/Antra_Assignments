@@ -8,7 +8,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["ECommerce.sln", "./"]
 COPY ["ApplicationCore/ApplicationCore.csproj", "ApplicationCore/"]
-COPY ["ECommerce.Api.Products/ECommerce.Api.Products.csproj", "ECommerce.Api.Products/"]
+COPY ["ECommerce.Api.Products/ECommerce.Api.Products.csproj", "ECommerce.Api.Products/"] 
 RUN dotnet nuget locals all --clear
 RUN dotnet restore "ApplicationCore/ApplicationCore.csproj" --verbosity detailed
 RUN dotnet restore "ECommerce.Api.Products/ECommerce.Api.Products.csproj" --verbosity detailed
